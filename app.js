@@ -1,30 +1,7 @@
 /* =========================================================
-   MURALI PERSONAL WEBSITE — V2
+   MURALI MANOHAR — V3
+   Main application
 ========================================================= */
-
-
-/* =========================================================
-   PERSONAL INFORMATION
-========================================================= */
-
-const PERSONAL = {
-
-  name:
-    "Murali Manohar",
-
-  email:
-    "",
-
-  github:
-    "",
-
-  linkedin:
-    "",
-
-  instagram:
-    ""
-
-};
 
 
 /* =========================================================
@@ -34,502 +11,219 @@ const PERSONAL = {
 const projects = [
 
   {
-    id: 1,
-
-    title:
-      "Tasty & Comfort",
-
-    category:
-      "business",
-
-    categoryLabel:
-      "Business",
-
-    theme:
-      "tc",
-
-    symbol:
-      "☕",
+    id: "tc",
+    title: "Tasty & Comfort",
+    category: "business",
+    categoryLabel: "Business",
+    icon: "☕",
 
     description:
-      "A real-world business concept designed around comfort, customer value, hygiene, experience and long-term thinking.",
-
-    problem:
-      "How can a small physical business be designed as a complete customer experience rather than simply a place that sells a product?",
-
-    approach:
-      "I explored the business identity, customer experience, information structure, safety considerations and digital presence together.",
-
-    built:
-      "A complete digital concept and interactive website for the T&C idea.",
-
-    learning:
-      "A business idea can be treated as an entire experience — not just a product, price or website.",
+      "A digital experience created around the T&C concept, combining food, comfort, safety, location utilities, AI interaction and business information.",
 
     tags: [
       "Business",
       "UI/UX",
-      "Web",
-      "Concept"
+      "AI",
+      "Maps",
+      "Safety"
     ],
 
     url:
       "https://tastyandcomfort.github.io/T-C/"
-
   },
 
 
   {
-    id: 2,
-
-    title:
-      "Jai Kisan",
-
-    category:
-      "agriculture",
-
-    categoryLabel:
-      "Agriculture",
-
-    theme:
-      "farmer",
-
-    symbol:
-      "⌁",
+    id: "former",
+    title: "Former",
+    category: "business",
+    categoryLabel: "Business",
+    icon: "◌",
 
     description:
-      "An agriculture-focused digital concept bringing useful information, services and practical resources together.",
-
-    problem:
-      "How can a digital platform make useful agricultural information easier to discover and explore?",
-
-    approach:
-      "I explored the idea as a broader information ecosystem instead of limiting it to a single feature.",
-
-    built:
-      "A web-based agriculture information and service concept.",
-
-    learning:
-      "Different information sources become more useful when they are organised around the actual needs of the user.",
+      "A separate experimental web project created as part of the wider collection of digital ideas and prototypes.",
 
     tags: [
-      "Agriculture",
-      "Information",
       "Web",
-      "Concept"
+      "Experiment",
+      "Design"
     ],
 
     url:
       "https://tastyandcomfort.github.io/Former/"
-
   },
 
 
   {
-    id: 3,
-
-    title:
-      "Find Near CARE",
-
-    category:
-      "navigation",
-
-    categoryLabel:
-      "Healthcare + Navigation",
-
-    theme:
-      "nearcare",
-
-    symbol:
-      "⌖",
+    id: "find-near-care",
+    title: "Find Near CARE",
+    category: "healthcare",
+    categoryLabel: "Healthcare",
+    icon: "⌖",
 
     description:
-      "A location-focused healthcare discovery experience combining hospitals, GPS, maps and route information.",
-
-    problem:
-      "How can someone quickly discover a nearby CARE Hospitals location and understand how to get there?",
-
-    approach:
-      "I combined location discovery with map interaction, GPS and routing so that the user can move from searching to navigation.",
-
-    built:
-      "A browser-based healthcare location discovery tool.",
-
-    learning:
-      "Location becomes much more useful when discovery and the journey to the destination are considered together.",
+      "A location-focused CARE Hospitals tool designed to help users find nearby CARE hospitals and navigate to them.",
 
     tags: [
       "Healthcare",
       "Maps",
       "GPS",
-      "Routing"
+      "Navigation"
     ],
 
     url:
       "https://muralimanoharcoin-max.github.io/Find-near-care/"
-
   },
 
 
   {
-    id: 4,
-
-    title:
-      "Find Doctor",
-
-    category:
-      "healthcare",
-
-    categoryLabel:
-      "Healthcare",
-
-    theme:
-      "doctor",
-
-    symbol:
-      "✚",
+    id: "find-doctor-care",
+    title: "Find Doctor CARE",
+    category: "healthcare",
+    categoryLabel: "Healthcare",
+    icon: "✚",
 
     description:
-      "A searchable healthcare information experience for discovering doctors, specialties and hospital-related information.",
-
-    problem:
-      "How can healthcare information be organised so users can discover the right doctor or specialty more easily?",
-
-    approach:
-      "I focused on structured information, search, filtering and a user-friendly discovery flow.",
-
-    built:
-      "A doctor discovery website connected to structured healthcare information.",
-
-    learning:
-      "Good information architecture can make large amounts of information feel much simpler to the person searching for it.",
+      "A doctor-discovery concept designed around CARE hospital information, speciality search and hospital navigation.",
 
     tags: [
       "Healthcare",
       "Search",
-      "Data",
-      "UI/UX"
+      "Doctors",
+      "Maps"
     ],
 
     url:
       "https://tandcfromnmm.github.io/Find-doctor-care.com/"
-
   },
 
 
   {
-    id: 5,
-
-    title:
-      "Safe Route",
-
-    category:
-      "safety",
-
-    categoryLabel:
-      "Safety + Communication",
-
-    theme:
-      "safe",
-
-    symbol:
-      "◇",
+    id: "care-portal",
+    title: "CARE Portal",
+    category: "tools",
+    categoryLabel: "Tools",
+    icon: "▦",
 
     description:
-      "A safety-oriented digital concept combining communication, location, GPS, routing, file sharing and emergency assistance.",
-
-    problem:
-      "How can communication, location and emergency-related tools be brought together into one travel-oriented experience?",
-
-    approach:
-      "I explored a unified experience where identity, communication, maps, routes and emergency functions can work together.",
-
-    built:
-      "A Safe Route web application concept with communication and location features.",
-
-    learning:
-      "Safety tools can become more useful when communication, location and essential services are considered as connected parts of one journey.",
+      "A digital portal concept bringing together useful CARE-related information and tools in one interface.",
 
     tags: [
-      "Safety",
-      "Communication",
-      "GPS",
-      "Maps",
-      "Realtime"
+      "Portal",
+      "Information",
+      "Tools",
+      "UI"
     ],
 
     url:
       "https://carehospitalsportal.github.io/Care-portal/"
-
   },
 
 
   {
-    id: 6,
-
-    title:
-      "CARE Portal",
-
-    category:
-      "healthcare",
-
-    categoryLabel:
-      "Healthcare + Portal",
-
-    theme:
-      "portal",
-
-    symbol:
-      "⌘",
+    id: "portal",
+    title: "Personal Web Portal",
+    category: "experiments",
+    categoryLabel: "Experiment",
+    icon: "⌘",
 
     description:
-      "An information and productivity portal concept designed around a healthcare environment.",
+      "An earlier portal-style experiment created to bring useful web resources and tools together in one place.",
 
-    problem:
-      "How can frequently needed information and useful tools be organised into one accessible digital portal?",
-
-    approach:
-      "I experimented with bringing different information and useful tools into one accessible interface.",
-
-    built:
-      "A healthcare-oriented portal experience.",
-
-    learning:
-      "A portal becomes more useful when it reduces the number of places a person needs to look for information.",
-
-    tags:[
-      "Healthcare",
+    tags: [
       "Portal",
-      "Information",
-      "Tools"
+      "Experiment",
+      "Web"
     ],
 
     url:
       "https://sites.google.com/view/imheretohelpyou/portal?authuser=0"
+  },
 
+
+  {
+    id: "safe-route",
+    title: "Safe Route",
+    category: "tools",
+    categoryLabel: "Tools",
+    icon: "△",
+
+    description:
+      "An experimental safety and communication platform concept combining Safe Route IDs, messaging, voice communication, maps, GPS and route-related utilities.",
+
+    tags: [
+      "Safety",
+      "Communication",
+      "Maps",
+      "GPS",
+      "Supabase"
+    ],
+
+    url:
+      "https://tandcfromnmm.github.io/Safe-Route/"
   }
 
 ];
 
 
 /* =========================================================
-   CAPABILITY / PROBLEM DATA
-========================================================= */
-
-const problemTypes = {
-
-  website: {
-
-    label:
-      "WEBSITE / DIGITAL EXPERIENCE",
-
-    title:
-      "I can turn an idea into an interactive web experience.",
-
-    description:
-      "My projects include business concepts, healthcare tools, portals and information-focused websites. I can explore the structure, interface and user journey and then build a working browser-based version.",
-
-    projects: [
-      "Tasty & Comfort",
-      "Jai Kisan",
-      "Find Doctor",
-      "CARE Portal"
-    ]
-
-  },
-
-
-  search: {
-
-    label:
-      "SEARCH / DISCOVERY",
-
-    title:
-      "I can organise information so people can find things.",
-
-    description:
-      "Search, filtering and structured information have been central to several of my projects, particularly healthcare discovery experiences.",
-
-    projects: [
-      "Find Doctor",
-      "Find Near CARE",
-      "CARE Portal"
-    ]
-
-  },
-
-
-  location: {
-
-    label:
-      "MAPS / GPS / LOCATION",
-
-    title:
-      "I can connect a website with the physical world.",
-
-    description:
-      "I've explored browser-based GPS, maps, location discovery, routing and nearby-service experiences.",
-
-    projects: [
-      "Find Near CARE",
-      "Safe Route"
-    ]
-
-  },
-
-
-  automation: {
-
-    label:
-      "AUTOMATION / WORKFLOW",
-
-    title:
-      "I can look for repetitive work that technology can simplify.",
-
-    description:
-      "I explore automation through spreadsheets, scripts, structured data and connected workflows, with the goal of reducing unnecessary manual steps.",
-
-    projects: [
-      "CARE Portal",
-      "Find Doctor"
-    ]
-
-  },
-
-
-  communication: {
-
-    label:
-      "COMMUNICATION",
-
-    title:
-      "I can explore communication as part of a larger digital experience.",
-
-    description:
-      "Safe Route explores text communication, voice communication, file sharing and location as connected pieces of a safety-oriented system.",
-
-    projects: [
-      "Safe Route"
-    ]
-
-  },
-
-
-  idea: {
-
-    label:
-      "UNUSUAL IDEA",
-
-    title:
-      "That's probably where the interesting part starts.",
-
-    description:
-      "Not every idea needs to fit an existing category. I like taking an unusual requirement, breaking it into smaller questions and exploring whether technology can turn it into something useful.",
-
-    projects: [
-      "Tasty & Comfort",
-      "Jai Kisan",
-      "Safe Route"
-    ]
-
-  }
-
-};
-
-
-/* =========================================================
-   DOM
+   DOM ELEMENTS
 ========================================================= */
 
 const projectsGrid =
-  document.getElementById(
-    "projectsGrid"
-  );
+  document.getElementById("projectsGrid");
+
+const projectFilter =
+  document.getElementById("projectFilter");
+
+const themeButton =
+  document.getElementById("themeButton");
+
+const currentYear =
+  document.getElementById("currentYear");
 
 const projectModal =
-  document.getElementById(
-    "projectModal"
-  );
-
-const modalContent =
-  document.getElementById(
-    "modalContent"
-  );
-
-const modalClose =
-  document.getElementById(
-    "modalClose"
-  );
+  document.getElementById("projectModal");
 
 const modalBackdrop =
-  document.getElementById(
-    "modalBackdrop"
-  );
+  document.getElementById("modalBackdrop");
 
-const mobileMenuButton =
-  document.getElementById(
-    "mobileMenuButton"
-  );
+const modalClose =
+  document.getElementById("modalClose");
 
-const mobileMenu =
-  document.getElementById(
-    "mobileMenu"
-  );
+const modalIcon =
+  document.getElementById("modalIcon");
 
-const emailButton =
-  document.getElementById(
-    "emailButton"
-  );
+const modalCategory =
+  document.getElementById("modalCategory");
 
-const yearElement =
-  document.getElementById(
-    "year"
-  );
+const modalTitle =
+  document.getElementById("modalTitle");
 
-const problemResult =
-  document.getElementById(
-    "problemResult"
-  );
+const modalDescription =
+  document.getElementById("modalDescription");
+
+const modalTags =
+  document.getElementById("modalTags");
+
+const modalLink =
+  document.getElementById("modalLink");
+
+const backTop =
+  document.getElementById("backTop");
+
+const navLinks =
+  document.querySelectorAll(".nav-link");
 
 
 /* =========================================================
    YEAR
 ========================================================= */
 
-if (yearElement) {
+if (currentYear) {
 
-  yearElement.textContent =
+  currentYear.textContent =
     new Date().getFullYear();
-
-}
-
-
-/* =========================================================
-   EMAIL
-========================================================= */
-
-if (
-  emailButton &&
-  PERSONAL.email
-) {
-
-  emailButton.href =
-    `mailto:${PERSONAL.email}`;
-
-} else if (emailButton) {
-
-  emailButton.addEventListener(
-    "click",
-    event => {
-
-      event.preventDefault();
-
-      alert(
-        "Add your email address in app.js to enable this button."
-      );
-
-    }
-  );
 
 }
 
@@ -544,47 +238,34 @@ function createProjectCard(project) {
     document.createElement("article");
 
   article.className =
-    `project-card theme-${project.theme}`;
+    "project-card reveal";
 
   article.dataset.category =
     project.category;
 
-
   article.innerHTML = `
 
-    <div
-      class="project-visual"
-      aria-hidden="true"
-    ></div>
+    <div>
 
-    <span
-      class="project-visual-symbol"
-      aria-hidden="true"
-    >
-      ${project.symbol}
-    </span>
+      <div class="project-top">
 
+        <div class="project-icon">
+          ${project.icon}
+        </div>
 
-    <div class="project-top">
+        <span class="project-category">
+          ${project.categoryLabel}
+        </span>
 
-      <span class="project-category">
-        ${project.categoryLabel}
-      </span>
-
-      <span class="project-index">
-        ${String(project.id).padStart(2, "0")}
-      </span>
-
-    </div>
+      </div>
 
 
-    <div class="project-middle">
-
-      <h3 class="project-title">
+      <h3>
         ${project.title}
       </h3>
 
-      <p class="project-description">
+
+      <p>
         ${project.description}
       </p>
 
@@ -596,16 +277,12 @@ function createProjectCard(project) {
       <div class="project-tags">
 
         ${project.tags
-          .slice(0,3)
-          .map(
-            tag =>
-              `<span>${tag}</span>`
-          )
+          .map(tag => `<span>${tag}</span>`)
           .join("")}
 
       </div>
 
-      <span class="project-open">
+      <span class="project-arrow">
         ↗
       </span>
 
@@ -629,33 +306,82 @@ function createProjectCard(project) {
    RENDER PROJECTS
 ========================================================= */
 
-function renderProjects(
-  filter = "all"
-) {
+function renderProjects(filter = "all") {
 
-  if (!projectsGrid) {
-    return;
-  }
-
+  if (!projectsGrid) return;
 
   projectsGrid.innerHTML = "";
 
 
-  const filtered =
-    filter === "all"
-      ? projects
-      : projects.filter(
-          project =>
-            project.category === filter
+  const visibleProjects =
+    projects.filter(project => {
+
+      if (filter === "all") {
+        return true;
+      }
+
+      return project.category === filter;
+
+    });
+
+
+  visibleProjects.forEach(project => {
+
+    const card =
+      createProjectCard(project);
+
+    projectsGrid.appendChild(card);
+
+  });
+
+
+  requestAnimationFrame(() => {
+
+    observeRevealElements();
+
+  });
+
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+if (projectFilter) {
+
+  projectFilter.addEventListener(
+    "click",
+    event => {
+
+      const button =
+        event.target.closest(
+          ".filter-button"
         );
 
+      if (!button) return;
 
-  filtered.forEach(
-    project => {
 
-      projectsGrid.appendChild(
-        createProjectCard(project)
-      );
+      document
+        .querySelectorAll(".filter-button")
+        .forEach(item => {
+
+          item.classList.remove(
+            "active"
+          );
+
+        });
+
+
+      button.classList.add("active");
+
+
+      const filter =
+        button.dataset.filter ||
+        "all";
+
+
+      renderProjects(filter);
 
     }
   );
@@ -664,136 +390,39 @@ function renderProjects(
 
 
 /* =========================================================
-   MODAL
+   OPEN PROJECT MODAL
 ========================================================= */
 
 function openProject(project) {
 
-  if (
-    !projectModal ||
-    !modalContent
-  ) {
-    return;
-  }
+  if (!projectModal) return;
 
 
-  modalContent.innerHTML = `
+  modalIcon.textContent =
+    project.icon;
 
-    <div
-      class="modal-hero ${project.theme}"
-    >
+  modalCategory.textContent =
+    project.categoryLabel;
 
-      <span
-        class="modal-hero-symbol"
-      >
-        ${project.symbol}
-      </span>
+  modalTitle.textContent =
+    project.title;
 
-      <span class="modal-category">
-        ${project.categoryLabel}
-      </span>
-
-    </div>
+  modalDescription.textContent =
+    project.description;
 
 
-    <h2 class="modal-title">
-      ${project.title}
-    </h2>
+  modalTags.innerHTML =
+    project.tags
+      .map(tag => `<span>${tag}</span>`)
+      .join("");
 
 
-    <p class="modal-description">
-      ${project.description}
-    </p>
-
-
-    <div class="modal-details">
-
-
-      <div class="modal-detail">
-
-        <span class="modal-detail-label">
-          The problem
-        </span>
-
-        <p>
-          ${project.problem}
-        </p>
-
-      </div>
-
-
-      <div class="modal-detail">
-
-        <span class="modal-detail-label">
-          My approach
-        </span>
-
-        <p>
-          ${project.approach}
-        </p>
-
-      </div>
-
-
-      <div class="modal-detail">
-
-        <span class="modal-detail-label">
-          What I built
-        </span>
-
-        <p>
-          ${project.built}
-        </p>
-
-      </div>
-
-
-      <div class="modal-detail">
-
-        <span class="modal-detail-label">
-          What I learned
-        </span>
-
-        <p>
-          ${project.learning}
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-tags">
-
-      ${project.tags
-        .map(
-          tag =>
-            `<span>${tag}</span>`
-        )
-        .join("")}
-
-    </div>
-
-
-    <div class="modal-actions">
-
-      <a
-        href="${project.url}"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="button button-dark"
-      >
-        Open live project
-        <span>↗</span>
-      </a>
-
-    </div>
-
-  `;
+  modalLink.href =
+    project.url;
 
 
   projectModal.classList.add(
-    "active"
+    "open"
   );
 
   projectModal.setAttribute(
@@ -809,18 +438,16 @@ function openProject(project) {
 
 
 /* =========================================================
-   CLOSE MODAL
+   CLOSE PROJECT MODAL
 ========================================================= */
 
 function closeProject() {
 
-  if (!projectModal) {
-    return;
-  }
+  if (!projectModal) return;
 
 
   projectModal.classList.remove(
-    "active"
+    "open"
   );
 
   projectModal.setAttribute(
@@ -861,9 +488,8 @@ document.addEventListener(
 
     if (
       event.key === "Escape" &&
-      projectModal &&
       projectModal.classList.contains(
-        "active"
+        "open"
       )
     ) {
 
@@ -876,385 +502,351 @@ document.addEventListener(
 
 
 /* =========================================================
-   PROJECT FILTERS
+   THEME
 ========================================================= */
 
-document
-  .querySelectorAll(
-    "[data-project-filter]"
-  )
-  .forEach(
-    button => {
+function applyTheme(theme) {
 
-      button.addEventListener(
-        "click",
-        () => {
+  if (theme === "dark") {
 
-          document
-            .querySelectorAll(
-              "[data-project-filter]"
-            )
-            .forEach(
-              item =>
-                item.classList.remove(
-                  "active"
-                )
-            );
+    document.body.classList.add(
+      "dark"
+    );
 
+    themeButton.textContent =
+      "☀";
 
-          button.classList.add(
-            "active"
-          );
+  } else {
 
+    document.body.classList.remove(
+      "dark"
+    );
 
-          renderProjects(
-            button.dataset.projectFilter
-          );
+    themeButton.textContent =
+      "◐";
 
-        }
-      );
+  }
 
-    }
-  );
+}
 
 
-/* =========================================================
-   WORLD CARDS
-========================================================= */
+function getSavedTheme() {
 
-document
-  .querySelectorAll(
-    "[data-filter]"
-  )
-  .forEach(
-    card => {
+  try {
 
-      card.addEventListener(
-        "click",
-        () => {
+    return localStorage.getItem(
+      "murali-v3-theme"
+    );
 
-          const filter =
-            card.dataset.filter;
+  } catch (error) {
 
+    return null;
 
-          const matching =
-            document.querySelector(
-              `[data-project-filter="${filter}"]`
-            );
+  }
 
+}
 
-          if (matching) {
 
-            matching.click();
+function saveTheme(theme) {
 
-          } else {
+  try {
 
-            renderProjects(filter);
+    localStorage.setItem(
+      "murali-v3-theme",
+      theme
+    );
 
-          }
+  } catch (error) {
 
+    /* localStorage unavailable */
+  }
 
-          const work =
-            document.getElementById(
-              "work"
-            );
+}
 
 
-          if (work) {
+const savedTheme =
+  getSavedTheme();
 
-            work.scrollIntoView({
-              behavior:
-                "smooth",
 
-              block:
-                "start"
-            });
+if (savedTheme) {
 
-          }
+  applyTheme(savedTheme);
 
-        }
-      );
+} else if (
+  window.matchMedia &&
+  window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches
+) {
 
-    }
-  );
+  applyTheme("dark");
 
+} else {
 
-/* =========================================================
-   PROBLEM EXPLORER
-========================================================= */
+  applyTheme("light");
 
-document
-  .querySelectorAll(
-    "[data-problem]"
-  )
-  .forEach(
-    button => {
+}
 
-      button.addEventListener(
-        "click",
-        () => {
 
-          const key =
-            button.dataset.problem;
+if (themeButton) {
 
-          const result =
-            problemTypes[key];
-
-
-          if (
-            !result ||
-            !problemResult
-          ) {
-            return;
-          }
-
-
-          problemResult.style.opacity =
-            "0";
-
-          problemResult.style.transform =
-            "translateY(8px)";
-
-
-          setTimeout(
-            () => {
-
-              problemResult.innerHTML = `
-
-                <span class="result-label">
-                  ${result.label}
-                </span>
-
-                <h3 class="result-title">
-                  ${result.title}
-                </h3>
-
-                <p class="result-description">
-                  ${result.description}
-                </p>
-
-
-                <div class="result-projects">
-
-                  ${result.projects
-                    .map(
-                      name => {
-
-                        const project =
-                          projects.find(
-                            item =>
-                              item.title === name
-                          );
-
-
-                        if (!project) {
-                          return "";
-                        }
-
-
-                        return `
-                          <button
-                            class="result-project-chip"
-                            data-result-project="${project.id}"
-                          >
-                            ${project.title}
-                          </button>
-                        `;
-
-                      }
-                    )
-                    .join("")}
-
-                </div>
-
-              `;
-
-
-              problemResult.style.opacity =
-                "1";
-
-              problemResult.style.transform =
-                "translateY(0)";
-
-
-              problemResult
-                .querySelectorAll(
-                  "[data-result-project]"
-                )
-                .forEach(
-                  chip => {
-
-                    chip.addEventListener(
-                      "click",
-                      () => {
-
-                        const project =
-                          projects.find(
-                            item =>
-                              String(
-                                item.id
-                              ) ===
-                              chip.dataset
-                                .resultProject
-                          );
-
-
-                        if (project) {
-
-                          openProject(
-                            project
-                          );
-
-                        }
-
-                      }
-                    );
-
-                  }
-                );
-
-            },
-            180
-          );
-
-        }
-      );
-
-    }
-  );
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-if (mobileMenuButton) {
-
-  mobileMenuButton.addEventListener(
+  themeButton.addEventListener(
     "click",
     () => {
 
-      mobileMenu.classList.toggle(
-        "active"
-      );
+      const isDark =
+        document.body.classList.contains(
+          "dark"
+        );
+
+
+      const nextTheme =
+        isDark
+          ? "light"
+          : "dark";
+
+
+      applyTheme(nextTheme);
+
+      saveTheme(nextTheme);
 
     }
   );
 
 }
-
-
-document
-  .querySelectorAll(
-    ".mobile-menu a"
-  )
-  .forEach(
-    link => {
-
-      link.addEventListener(
-        "click",
-        () => {
-
-          mobileMenu.classList.remove(
-            "active"
-          );
-
-        }
-      );
-
-    }
-  );
 
 
 /* =========================================================
    SCROLL REVEAL
 ========================================================= */
 
-const revealElements =
-  document.querySelectorAll(
-    ".reveal"
-  );
+let revealObserver = null;
 
 
-const revealObserver =
-  new IntersectionObserver(
-    entries => {
+function observeRevealElements() {
 
-      entries.forEach(
-        entry => {
+  const elements =
+    document.querySelectorAll(
+      ".reveal:not(.visible)"
+    );
 
-          if (
-            entry.isIntersecting
-          ) {
 
-            entry.target.classList.add(
-              "visible"
-            );
+  if (!("IntersectionObserver" in window)) {
 
-            revealObserver.unobserve(
-              entry.target
-            );
+    elements.forEach(
+      element =>
+        element.classList.add(
+          "visible"
+        )
+    );
 
-          }
+    return;
 
+  }
+
+
+  if (!revealObserver) {
+
+    revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: .08
         }
       );
 
-    },
-    {
-      threshold:
-        .12
-    }
-  );
+  }
 
 
-revealElements.forEach(
-  element =>
+  elements.forEach(element => {
+
     revealObserver.observe(
       element
-    )
-);
+    );
+
+  });
+
+}
 
 
 /* =========================================================
-   HERO PARALLAX
+   ADD REVEAL TO STATIC SECTIONS
 ========================================================= */
 
-const heroOrbit =
-  document.querySelector(
-    ".hero-orbit"
+function prepareStaticReveal() {
+
+  const selectors = [
+
+    ".statement-card",
+    ".about-card",
+    ".ability-card",
+    ".process-step",
+    ".lab-card",
+    ".closing-inner",
+    ".contact-card"
+
+  ];
+
+
+  selectors.forEach(selector => {
+
+    document
+      .querySelectorAll(selector)
+      .forEach(element => {
+
+        if (
+          !element.classList.contains(
+            "reveal"
+          )
+        ) {
+
+          element.classList.add(
+            "reveal"
+          );
+
+        }
+
+      });
+
+  });
+
+}
+
+
+/* =========================================================
+   NAVIGATION ACTIVE STATE
+========================================================= */
+
+const observedSections =
+  document.querySelectorAll(
+    "main section[id]"
   );
 
 
-if (
-  heroOrbit &&
-  !window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches
-) {
-
-  window.addEventListener(
-    "mousemove",
-    event => {
-
-      const x =
-        (
-          event.clientX /
-          window.innerWidth -
-          .5
-        ) * 14;
+let sectionObserver = null;
 
 
-      const y =
-        (
-          event.clientY /
-          window.innerHeight -
-          .5
-        ) * 14;
+function setupSectionObserver() {
+
+  if (
+    !("IntersectionObserver" in window)
+  ) {
+    return;
+  }
 
 
-      heroOrbit.style.transform =
-        `translate(${x}px,${y}px)`;
+  sectionObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+
+          const id =
+            entry.target.id;
+
+
+          navLinks.forEach(link => {
+
+            const linkTarget =
+              link.getAttribute(
+                "href"
+              );
+
+
+            link.classList.toggle(
+              "active",
+              linkTarget === `#${id}`
+            );
+
+          });
+
+        });
+
+      },
+      {
+        rootMargin:
+          "-35% 0px -55% 0px"
+      }
+    );
+
+
+  observedSections.forEach(section => {
+
+    sectionObserver.observe(
+      section
+    );
+
+  });
+
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    if (
+      window.scrollY > 600
+    ) {
+
+      backTop.classList.add(
+        "visible"
+      );
+
+    } else {
+
+      backTop.classList.remove(
+        "visible"
+      );
+
+    }
+
+  },
+  {
+    passive: true
+  }
+);
+
+
+if (backTop) {
+
+  backTop.addEventListener(
+    "click",
+    () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
 
     }
   );
@@ -1263,22 +855,143 @@ if (
 
 
 /* =========================================================
-   INITIAL RENDER
+   SMALL PARALLAX EFFECT
 ========================================================= */
 
-renderProjects(
-  "all"
-);
+const heroVisual =
+  document.querySelector(
+    ".hero-visual"
+  );
+
+
+if (
+  heroVisual &&
+  window.matchMedia(
+    "(pointer:fine)"
+  ).matches
+) {
+
+  heroVisual.addEventListener(
+    "pointermove",
+    event => {
+
+      const rect =
+        heroVisual.getBoundingClientRect();
+
+
+      const x =
+        (
+          event.clientX -
+          rect.left
+        ) /
+        rect.width -
+        .5;
+
+
+      const y =
+        (
+          event.clientY -
+          rect.top
+        ) /
+        rect.height -
+        .5;
+
+
+      const mainCard =
+        heroVisual.querySelector(
+          ".hero-card"
+        );
+
+
+      if (mainCard) {
+
+        mainCard.style.transform =
+          `
+          rotate(${-4 + x * 4}deg)
+          translate(${x * 8}px, ${y * 8}px)
+          `;
+
+      }
+
+    }
+  );
+
+
+  heroVisual.addEventListener(
+    "pointerleave",
+    () => {
+
+      const mainCard =
+        heroVisual.querySelector(
+          ".hero-card"
+        );
+
+
+      if (mainCard) {
+
+        mainCard.style.transform =
+          "rotate(-4deg)";
+
+      }
+
+    }
+  );
+
+}
 
 
 /* =========================================================
-   CONSOLE
+   INITIALISE
 ========================================================= */
 
-console.log(
-  "Murali Personal Website V2 loaded."
-);
+function init() {
 
-console.log(
-  `${projects.length} projects loaded.`
+  prepareStaticReveal();
+
+  renderProjects("all");
+
+  observeRevealElements();
+
+  setupSectionObserver();
+
+}
+
+
+if (
+  document.readyState ===
+  "loading"
+) {
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    init
+  );
+
+} else {
+
+  init();
+
+}
+
+
+/* =========================================================
+   ERROR PROTECTION
+========================================================= */
+
+window.addEventListener(
+  "error",
+  event => {
+
+    /*
+      Do not allow a small runtime error
+      to leave the entire page visually
+      unusable.
+    */
+
+    console.warn(
+      "Portfolio runtime notice:",
+      event.message
+    );
+
+  }
 );
