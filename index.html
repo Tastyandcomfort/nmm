@@ -10,113 +10,104 @@
 
   <meta
     name="description"
-    content="Meet Murali — ideas, experiments, digital projects and things built with curiosity."
+    content="Murali Manohar — personal digital portfolio, projects, ideas and experiments."
   >
 
   <meta name="theme-color" content="#f5f5f7">
 
-  <title>Meet Murali — Ideas Into Things</title>
+  <title>Murali Manohar — Ideas Into Things</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- BACKGROUND -->
+  <!-- =========================
+       BACKGROUND
+  ========================== -->
 
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
   <div class="ambient ambient-three"></div>
 
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-  <!-- NAVIGATION -->
+  <header class="topbar" id="top">
 
-  <header class="site-header">
+    <a href="#home" class="brand">
+      <span class="brand-mark">M</span>
 
-    <nav class="nav glass">
+      <span class="brand-text">
+        <strong>Murali Manohar</strong>
+        <small>Digital Portfolio</small>
+      </span>
+    </a>
 
-      <a href="#top" class="brand">
-        <span class="brand-dot"></span>
-        <span>Murali</span>
-      </a>
+    <nav class="main-nav">
 
-      <div class="nav-links">
-        <a href="#me">Me</a>
-        <a href="#work">Work</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#thinking">Thinking</a>
-        <a href="#ideas">Ideas</a>
-      </div>
-
-      <a href="#contact" class="nav-contact">
-        Contact
-      </a>
-
-      <button
-        class="mobile-menu-button"
-        id="mobileMenuButton"
-        aria-label="Open navigation"
-      >
-        <span></span>
-        <span></span>
-      </button>
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#work" class="nav-link">Work</a>
+      <a href="#ability" class="nav-link">Ability</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#contact" class="nav-link">Connect</a>
 
     </nav>
 
-
-    <div class="mobile-menu glass" id="mobileMenu">
-
-      <a href="#me">Me</a>
-      <a href="#work">Work</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#thinking">Thinking</a>
-      <a href="#ideas">Ideas</a>
-      <a href="#contact">Contact</a>
-
-    </div>
+    <button
+      class="theme-button"
+      id="themeButton"
+      type="button"
+      aria-label="Toggle appearance"
+    >
+      ◐
+    </button>
 
   </header>
 
 
-  <main id="top">
+  <!-- =========================
+       MAIN
+  ========================== -->
 
+  <main>
 
-    <!-- =====================================================
+    <!-- =========================
          HERO
-    ====================================================== -->
+    ========================== -->
 
-    <section class="hero section">
+    <section class="hero section" id="home">
 
-      <div class="hero-content reveal">
+      <div class="hero-content">
 
-        <div class="eyebrow">
+        <div class="status-pill">
           <span class="status-dot"></span>
-          Personal digital space
+          Building • Learning • Experimenting
         </div>
 
         <h1>
-          Meet
-          <span class="gradient-text">Murali.</span>
+          I turn
+          <span class="gradient-text">ideas</span>
+          into things people can use.
         </h1>
 
-        <p class="hero-statement">
-          I turn ideas into things.
-        </p>
-
         <p class="hero-description">
-          I explore technology by taking ideas, understanding problems,
-          learning what I need, and building working digital experiences.
+          I'm Murali Manohar — a curious builder who enjoys taking an idea,
+          understanding the problem behind it, experimenting with technology,
+          and turning it into a working digital experience.
         </p>
 
         <div class="hero-actions">
 
-          <a href="#work" class="button button-dark">
+          <a href="#work" class="button button-primary">
             Explore my work
             <span>↗</span>
           </a>
 
-          <a href="#me" class="button button-light">
-            Meet me
+          <a href="#about" class="button button-secondary">
+            Get to know me
           </a>
 
         </div>
@@ -124,691 +115,324 @@
       </div>
 
 
-      <!-- HERO OBJECT -->
+      <!-- HERO VISUAL -->
 
-      <div class="hero-orbit">
+      <div class="hero-visual">
 
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
-        <div class="orbit orbit-three"></div>
 
-        <div class="hero-orb">
-          <span>MM</span>
+        <div class="hero-card hero-card-main">
+
+          <div class="mini-window-top">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="hero-card-content">
+
+            <span class="code-label">&lt;build /&gt;</span>
+
+            <h3>
+              Idea
+              <span>→</span>
+              Design
+              <span>→</span>
+              Build
+            </h3>
+
+            <div class="mini-progress">
+              <span></span>
+            </div>
+
+            <p>
+              Curiosity is the starting point.
+              Building is how I learn.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="floating-card floating-card-one">
+          <span class="floating-icon">✦</span>
+          <div>
+            <strong>Ideas</strong>
+            <small>Explore</small>
+          </div>
+        </div>
+
+
+        <div class="floating-card floating-card-two">
+          <span class="floating-icon">⌁</span>
+          <div>
+            <strong>Build</strong>
+            <small>Experiment</small>
+          </div>
+        </div>
+
+
+        <div class="floating-card floating-card-three">
+          <span class="floating-icon">✓</span>
+          <div>
+            <strong>Improve</strong>
+            <small>Repeat</small>
+          </div>
         </div>
 
       </div>
 
+    </section>
 
-      <div class="scroll-hint">
-        <span></span>
-        Scroll to explore
+
+    <!-- =========================
+         QUICK STATEMENT
+    ========================== -->
+
+    <section class="statement-section">
+
+      <div class="statement-card">
+
+        <span class="eyebrow">THE SIMPLE VERSION</span>
+
+        <h2>
+          I don't just want to know
+          <span>how something works.</span>
+          I want to see what I can make with it.
+        </h2>
+
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         INTRO
-    ====================================================== -->
+    <!-- =========================
+         ABOUT
+    ========================== -->
 
-    <section class="statement-section section reveal">
+    <section class="section content-section" id="about">
 
-      <div class="section-label">
-        01 / THE IDEA
-      </div>
-
-      <div class="statement-large">
-
-        <span>Some people</span>
-        <span class="muted-text">collect skills.</span>
-
-        <br>
-
-        <span>I collect</span>
-        <span class="gradient-text">problems.</span>
-
-      </div>
-
-      <p class="section-description">
-
-        A question, an inconvenience, an idea or a situation
-        can become the beginning of something I want to build.
-
-      </p>
-
-    </section>
-
-
-    <!-- =====================================================
-         ME
-    ====================================================== -->
-
-    <section id="me" class="section split-section reveal">
-
-      <div class="section-label">
-        02 / ME
-      </div>
-
-      <div class="split-content">
+      <div class="section-heading">
 
         <div>
+          <span class="eyebrow">01 / ABOUT</span>
 
           <h2>
-            Curious by nature.
-            <br>
-            Builder by choice.
+            More than a list
+            of skills.
           </h2>
-
-        </div>
-
-        <div class="text-column">
-
-          <p>
-            I'm interested in what happens when an idea moves from
-            imagination into something people can actually use.
-          </p>
-
-          <p>
-            I don't expect to know everything before starting.
-            I learn while building, test what I create, find what
-            doesn't work and improve it.
-          </p>
-
-          <p>
-            That's why my projects move across different areas —
-            healthcare, agriculture, navigation, safety,
-            communication, business and experimental technology.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         MY WORLD
-    ====================================================== -->
-
-    <section class="section reveal">
-
-      <div class="section-label">
-        03 / MY WORLD
-      </div>
-
-      <div class="section-heading-row">
-
-        <div>
-
-          <h2>
-            Different problems.
-            <br>
-            Same curiosity.
-          </h2>
-
         </div>
 
         <p>
-          I don't want to stay inside one category.
-          I want to understand what can be built.
+          A little context about the person behind the projects.
         </p>
 
       </div>
 
 
-      <div class="world-grid">
+      <div class="about-grid">
 
-        <button class="world-card healthcare-card" data-filter="healthcare">
+        <article class="about-card about-main">
 
-          <span class="world-visual">
-            <span>✚</span>
-          </span>
+          <div class="about-number">01</div>
 
-          <strong>Healthcare</strong>
+          <h3>Curious by nature.</h3>
 
-          <small>
-            Search · Information · Discovery
-          </small>
+          <p>
+            I like understanding how things work and then asking a second
+            question: “What else could this become?”
+          </p>
 
-        </button>
+          <p>
+            That mindset has led me into website development, interface
+            design, automation, mapping, information systems, AI-assisted
+            development and many experiments that started simply as ideas.
+          </p>
 
-
-        <button class="world-card agriculture-card" data-filter="agriculture">
-
-          <span class="world-visual">
-            <span>⌁</span>
-          </span>
-
-          <strong>Agriculture</strong>
-
-          <small>
-            Information · Services · Practical tools
-          </small>
-
-        </button>
+        </article>
 
 
-        <button class="world-card navigation-card" data-filter="navigation">
+        <article class="about-card">
 
-          <span class="world-visual">
-            <span>⌖</span>
-          </span>
+          <span class="card-icon">◎</span>
 
-          <strong>Navigation</strong>
+          <h3>Problem first</h3>
 
-          <small>
-            Maps · GPS · Routes · Locations
-          </small>
+          <p>
+            I prefer starting with the user's problem instead of starting
+            with a technology.
+          </p>
 
-        </button>
-
-
-        <button class="world-card safety-card" data-filter="safety">
-
-          <span class="world-visual">
-            <span>◇</span>
-          </span>
-
-          <strong>Safety</strong>
-
-          <small>
-            Emergency · Communication · Assistance
-          </small>
-
-        </button>
+        </article>
 
 
-        <button class="world-card business-card" data-filter="business">
+        <article class="about-card">
 
-          <span class="world-visual">
-            <span>◌</span>
-          </span>
+          <span class="card-icon">◇</span>
 
-          <strong>Business</strong>
+          <h3>Learn by building</h3>
 
-          <small>
-            Ideas · Experiences · Customer value
-          </small>
+          <p>
+            Working prototypes help me understand concepts much faster
+            than theory alone.
+          </p>
 
-        </button>
+        </article>
 
 
-        <button class="world-card technology-card" data-filter="technology">
+        <article class="about-card">
 
-          <span class="world-visual">
-            <span>⌘</span>
-          </span>
+          <span class="card-icon">↻</span>
 
-          <strong>Technology</strong>
+          <h3>Keep improving</h3>
 
-          <small>
-            AI · Web · Automation · Experiments
-          </small>
+          <p>
+            A first version is rarely the final version. I like revisiting,
+            testing and improving what I create.
+          </p>
 
-        </button>
+        </article>
+
+
+        <article class="about-card">
+
+          <span class="card-icon">✦</span>
+
+          <h3>AI as a tool</h3>
+
+          <p>
+            I use AI to explore ideas, solve problems, experiment with
+            implementations and accelerate learning.
+          </p>
+
+        </article>
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         PROJECTS
-    ====================================================== -->
+    <!-- =========================
+         WORK
+    ========================== -->
 
-    <section id="work" class="section work-section reveal">
+    <section class="section content-section work-section" id="work">
 
-      <div class="section-label">
-        04 / THINGS I'VE BUILT
-      </div>
-
-      <div class="section-heading-row">
+      <div class="section-heading">
 
         <div>
+          <span class="eyebrow">02 / SELECTED WORK</span>
 
           <h2>
-            Don't take my word
-            <br>
-            for it.
+            Things I have
+            actually built.
           </h2>
-
         </div>
 
         <p>
-          Explore the actual projects.
-          The work is the evidence.
+          Explore the projects instead of simply reading about them.
         </p>
 
       </div>
 
 
-      <div class="project-filters">
+      <!-- FILTER -->
 
-        <button
-          class="filter-button active"
-          data-project-filter="all"
-        >
+      <div class="project-filter" id="projectFilter">
+
+        <button class="filter-button active" data-filter="all">
           All
         </button>
 
-        <button
-          class="filter-button"
-          data-project-filter="healthcare"
-        >
+        <button class="filter-button" data-filter="healthcare">
           Healthcare
         </button>
 
-        <button
-          class="filter-button"
-          data-project-filter="agriculture"
-        >
-          Agriculture
-        </button>
-
-        <button
-          class="filter-button"
-          data-project-filter="navigation"
-        >
-          Navigation
-        </button>
-
-        <button
-          class="filter-button"
-          data-project-filter="safety"
-        >
-          Safety
-        </button>
-
-        <button
-          class="filter-button"
-          data-project-filter="business"
-        >
+        <button class="filter-button" data-filter="business">
           Business
         </button>
 
+        <button class="filter-button" data-filter="tools">
+          Tools
+        </button>
+
+        <button class="filter-button" data-filter="experiments">
+          Experiments
+        </button>
+
       </div>
 
 
-      <div
-        class="projects-grid"
-        id="projectsGrid"
-      ></div>
+      <!-- PROJECTS -->
+
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Projects generated by app.js -->
+      </div>
 
     </section>
 
 
-    <!-- =====================================================
-         INTERACTIVE CAPABILITY EXPLORER
-    ====================================================== -->
+    <!-- =========================
+         ABILITY
+    ========================== -->
 
-    <section
-      id="capabilities"
-      class="section explorer-section reveal"
-    >
+    <section class="section content-section" id="ability">
 
-      <div class="section-label">
-        05 / GIVE ME A PROBLEM
-      </div>
-
-
-      <div class="explorer-intro">
+      <div class="section-heading">
 
         <div>
+          <span class="eyebrow">03 / ABILITY</span>
 
           <h2>
-            What are you
-            <br>
-            trying to build?
+            What I like
+            figuring out.
           </h2>
-
         </div>
 
         <p>
-          Pick a problem. I'll show you the kind of work
-          I've explored around it.
+          Not just technologies — the kinds of problems I enjoy solving.
         </p>
 
       </div>
 
 
-      <div class="problem-selector">
+      <div class="ability-grid">
 
-        <button
-          class="problem-option"
-          data-problem="website"
-        >
-          <span class="problem-number">01</span>
+        <article class="ability-card large">
 
-          <span>
-            I need a website
-          </span>
+          <span class="ability-number">01</span>
 
-          <span class="problem-arrow">↗</span>
-        </button>
-
-
-        <button
-          class="problem-option"
-          data-problem="search"
-        >
-          <span class="problem-number">02</span>
-
-          <span>
-            I need a search system
-          </span>
-
-          <span class="problem-arrow">↗</span>
-        </button>
-
-
-        <button
-          class="problem-option"
-          data-problem="location"
-        >
-          <span class="problem-number">03</span>
-
-          <span>
-            I need maps or GPS
-          </span>
-
-          <span class="problem-arrow">↗</span>
-        </button>
-
-
-        <button
-          class="problem-option"
-          data-problem="automation"
-        >
-          <span class="problem-number">04</span>
-
-          <span>
-            I need automation
-          </span>
-
-          <span class="problem-arrow">↗</span>
-        </button>
-
-
-        <button
-          class="problem-option"
-          data-problem="communication"
-        >
-          <span class="problem-number">05</span>
-
-          <span>
-            I need communication
-          </span>
-
-          <span class="problem-arrow">↗</span>
-        </button>
-
-
-        <button
-          class="problem-option"
-          data-problem="idea"
-        >
-          <span class="problem-number">06</span>
-
-          <span>
-            I have an unusual idea
-          </span>
-
-          <span class="problem-arrow">↗</span>
-        </button>
-
-      </div>
-
-
-      <div
-        class="problem-result glass"
-        id="problemResult"
-      >
-
-        <div class="result-placeholder">
-
-          <span class="result-symbol">+</span>
+          <h3>Digital experiences</h3>
 
           <p>
-            Choose something above.
+            Turning an idea into a clean, responsive interface that people
+            can understand without needing instructions.
           </p>
 
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         HOW I BUILD
-    ====================================================== -->
-
-    <section
-      id="thinking"
-      class="section process-section reveal"
-    >
-
-      <div class="section-label">
-        06 / HOW I BUILD
-      </div>
-
-      <div class="process-intro">
-
-        <h2>
-          I don't always know
-          <br>
-          how to build it.
-        </h2>
-
-        <p>
-          That's where I start.
-        </p>
-
-      </div>
-
-
-      <div class="process-list">
-
-        <div class="process-item">
-
-          <span class="process-number">01</span>
-
-          <div>
-            <h3>Ask</h3>
-            <p>
-              What exactly is the problem?
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">02</span>
-
-          <div>
-            <h3>Imagine</h3>
-            <p>
-              What could the solution look like?
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">03</span>
-
-          <div>
-            <h3>Learn</h3>
-            <p>
-              Find what I don't know yet.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">04</span>
-
-          <div>
-            <h3>Build</h3>
-            <p>
-              Turn the idea into a working version.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">05</span>
-
-          <div>
-            <h3>Break it</h3>
-            <p>
-              Find what doesn't work.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="process-item">
-
-          <span class="process-number">06</span>
-
-          <div>
-            <h3>Improve</h3>
-            <p>
-              Try again. Make it better.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CAPABILITIES
-    ====================================================== -->
-
-    <section class="section capabilities-section reveal">
-
-      <div class="section-label">
-        07 / CAPABILITIES
-      </div>
-
-      <h2>
-        Things I can explore,
-        <br>
-        build and connect.
-      </h2>
-
-
-      <div class="capability-grid">
-
-        <article class="capability-card">
-
-          <span class="capability-number">01</span>
-
-          <h3>Build</h3>
-
-          <p>
-            Websites, interfaces, interactive tools and prototypes.
-          </p>
-
-          <div class="tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>GitHub</span>
-          </div>
-
-        </article>
-
-
-        <article class="capability-card">
-
-          <span class="capability-number">02</span>
-
-          <h3>Connect</h3>
-
-          <p>
-            Maps, GPS, APIs, external services and data-driven experiences.
-          </p>
-
-          <div class="tags">
-            <span>Maps</span>
-            <span>GPS</span>
-            <span>APIs</span>
-            <span>Data</span>
-          </div>
-
-        </article>
-
-
-        <article class="capability-card">
-
-          <span class="capability-number">03</span>
-
-          <h3>Automate</h3>
-
-          <p>
-            Practical workflows using spreadsheets, scripts and automation.
-          </p>
-
-          <div class="tags">
-            <span>Google Sheets</span>
-            <span>Apps Script</span>
-            <span>Automation</span>
-          </div>
-
-        </article>
-
-
-        <article class="capability-card">
-
-          <span class="capability-number">04</span>
-
-          <h3>Experiment</h3>
-
-          <p>
-            AI-assisted development, new technologies and ideas worth testing.
-          </p>
-
-          <div class="tags">
-            <span>AI</span>
+          <div class="ability-tags">
+            <span>UI</span>
             <span>UX</span>
-            <span>Prototypes</span>
-            <span>Experiments</span>
+            <span>Responsive Web</span>
           </div>
 
         </article>
 
 
-        <article class="capability-card">
+        <article class="ability-card">
 
-          <span class="capability-number">05</span>
+          <span class="ability-number">02</span>
 
-          <h3>Solve</h3>
+          <h3>Problem solving</h3>
 
           <p>
-            Break real-world problems into smaller parts and work
-            toward practical digital solutions.
+            Breaking a large problem into smaller pieces and testing
+            practical solutions.
           </p>
 
-          <div class="tags">
-            <span>Problem solving</span>
+          <div class="ability-tags">
+            <span>Logic</span>
             <span>Research</span>
             <span>Testing</span>
           </div>
@@ -816,21 +440,81 @@
         </article>
 
 
-        <article class="capability-card">
+        <article class="ability-card">
 
-          <span class="capability-number">06</span>
+          <span class="ability-number">03</span>
 
-          <h3>Improve</h3>
+          <h3>Web development</h3>
 
           <p>
-            Revisit things I've built and keep looking for ways
-            to make them clearer, safer and easier to use.
+            Building browser-based experiences with HTML, CSS and JavaScript,
+            including interactive features.
           </p>
 
-          <div class="tags">
+          <div class="ability-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+
+        </article>
+
+
+        <article class="ability-card">
+
+          <span class="ability-number">04</span>
+
+          <h3>Maps & location</h3>
+
+          <p>
+            Working with maps, GPS, routes, location search and nearby
+            information to create useful tools.
+          </p>
+
+          <div class="ability-tags">
+            <span>Maps</span>
+            <span>GPS</span>
+            <span>Routes</span>
+          </div>
+
+        </article>
+
+
+        <article class="ability-card">
+
+          <span class="ability-number">05</span>
+
+          <h3>AI-assisted building</h3>
+
+          <p>
+            Using AI as a development partner while still thinking through
+            the requirements, design and behaviour of the final product.
+          </p>
+
+          <div class="ability-tags">
+            <span>AI</span>
+            <span>Prompting</span>
             <span>Iteration</span>
-            <span>UI/UX</span>
-            <span>Testing</span>
+          </div>
+
+        </article>
+
+
+        <article class="ability-card">
+
+          <span class="ability-number">06</span>
+
+          <h3>Automation & systems</h3>
+
+          <p>
+            Connecting information, interfaces and workflows to reduce
+            repetitive work and make processes easier to use.
+          </p>
+
+          <div class="ability-tags">
+            <span>Automation</span>
+            <span>Sheets</span>
+            <span>Workflows</span>
           </div>
 
         </article>
@@ -840,128 +524,153 @@
     </section>
 
 
-    <!-- =====================================================
-         AI + HUMAN
-    ====================================================== -->
+    <!-- =========================
+         PROCESS
+    ========================== -->
 
-    <section class="section ai-section reveal">
+    <section class="section content-section process-section" id="process">
 
-      <div class="section-label">
-        08 / HOW I USE AI
-      </div>
-
-      <div class="ai-layout">
+      <div class="section-heading">
 
         <div>
+          <span class="eyebrow">04 / HOW I BUILD</span>
 
           <h2>
-            AI is the
-            <br>
-            building partner.
+            From a thought
+            to something real.
           </h2>
-
         </div>
 
-        <div class="ai-copy">
-
-          <p class="ai-large">
-            The idea still needs a person behind it.
-          </p>
-
-          <p>
-            I use AI to explore possibilities, learn unfamiliar
-            concepts, generate code, test approaches and move
-            from an idea toward a working prototype.
-          </p>
-
-          <p>
-            The direction, questions, decisions, testing and
-            iteration remain part of the process.
-          </p>
-
-        </div>
+        <p>
+          My approach is simple: understand, create, test and improve.
+        </p>
 
       </div>
 
 
-      <div class="ai-flow">
+      <div class="process-line">
 
-        <span>IDEA</span>
-        <i>→</i>
-        <span>ASK</span>
-        <i>→</i>
-        <span>BUILD</span>
-        <i>→</i>
-        <span>TEST</span>
-        <i>→</i>
-        <span>IMPROVE</span>
+        <article class="process-step">
+
+          <div class="step-number">01</div>
+
+          <span>START</span>
+
+          <h3>Think</h3>
+
+          <p>
+            What problem am I actually trying to solve?
+          </p>
+
+        </article>
+
+
+        <div class="process-arrow">→</div>
+
+
+        <article class="process-step">
+
+          <div class="step-number">02</div>
+
+          <span>EXPLORE</span>
+
+          <h3>Research</h3>
+
+          <p>
+            Understand the information, users and possible solutions.
+          </p>
+
+        </article>
+
+
+        <div class="process-arrow">→</div>
+
+
+        <article class="process-step">
+
+          <div class="step-number">03</div>
+
+          <span>CREATE</span>
+
+          <h3>Build</h3>
+
+          <p>
+            Turn the idea into a working prototype.
+          </p>
+
+        </article>
+
+
+        <div class="process-arrow">→</div>
+
+
+        <article class="process-step">
+
+          <div class="step-number">04</div>
+
+          <span>IMPROVE</span>
+
+          <h3>Test</h3>
+
+          <p>
+            Find what doesn't work, fix it and build the next version.
+          </p>
+
+        </article>
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          LAB
-    ====================================================== -->
+    ========================== -->
 
-    <section
-      id="ideas"
-      class="section ideas-section reveal"
-    >
+    <section class="section content-section lab-section">
 
-      <div class="section-label">
-        09 / THE LAB
-      </div>
+      <div class="lab-card">
 
-      <div class="ideas-layout">
+        <div class="lab-content">
 
-        <div>
+          <span class="eyebrow">05 / MY LAB</span>
 
           <h2>
-            Not everything
-            <br>
-            is finished.
+            The unfinished
+            ideas matter too.
           </h2>
 
-        </div>
-
-        <div>
-
-          <p class="large-text">
-            Some ideas become products.
-            Some become experiments.
-            Some simply become questions.
-          </p>
-
           <p>
-            I want this space to keep growing as I learn and build.
+            Some projects begin as experiments. Some become useful tools.
+            Some teach me something and disappear. I see all of them as
+            part of the process.
           </p>
+
+          <div class="lab-pills">
+
+            <span>Experiments</span>
+            <span>New concepts</span>
+            <span>Prototypes</span>
+            <span>Learning</span>
+
+          </div>
 
         </div>
 
-      </div>
 
+        <div class="lab-visual">
 
-      <div class="lab-card glass">
+          <div class="lab-orb orb-a"></div>
+          <div class="lab-orb orb-b"></div>
+          <div class="lab-orb orb-c"></div>
 
-        <div class="lab-orb">
-          +
-        </div>
-
-        <div>
-
-          <span class="lab-label">
-            CURRENT STATE
-          </span>
-
-          <h3>
-            Always exploring.
-          </h3>
-
-          <p>
-            New ideas will appear here as they become ready to share.
-          </p>
+          <div class="lab-center">
+            <span>IDEA</span>
+            <strong>+</strong>
+            <span>CURIOUSITY</span>
+            <strong>+</strong>
+            <span>BUILD</span>
+          </div>
 
         </div>
 
@@ -970,94 +679,69 @@
     </section>
 
 
-    <!-- =====================================================
-         ABOUT
-    ====================================================== -->
+    <!-- =========================
+         CLOSING STATEMENT
+    ========================== -->
 
-    <section class="section about-section reveal">
+    <section class="closing-section">
 
-      <div class="section-label">
-        10 / A LITTLE MORE ABOUT ME
-      </div>
+      <div class="closing-inner">
 
-      <div class="about-grid">
-
-        <div>
-
-          <h2>
-            The projects
-            <br>
-            are only part
-            <br>
-            of the story.
-          </h2>
-
-        </div>
-
-        <div class="about-text">
-
-          <p>
-            I'm someone who enjoys taking an idea and seeing how far
-            I can take it.
-          </p>
-
-          <p>
-            Technology gives me a way to experiment with those ideas,
-            but the technology itself isn't always the interesting part.
-          </p>
-
-          <p>
-            The interesting part is what happens when an idea becomes
-            something another person can actually use.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FINAL
-    ====================================================== -->
-
-    <section
-      id="contact"
-      class="final-section reveal"
-    >
-
-      <div class="final-glow"></div>
-
-      <div class="final-content">
-
-        <span class="final-label">
-          THE NEXT IDEA
-        </span>
+        <span class="eyebrow">THE NEXT VERSION</span>
 
         <h2>
-          I have more
-          <br>
-          ideas.
+          There is always
+          something new to build.
         </h2>
 
         <p>
-          This website is only a snapshot.
+          This website is one more project in that journey.
         </p>
 
-        <div class="final-actions">
+      </div>
 
-          <a href="#work" class="button button-dark">
-            Explore my work
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="section content-section contact-section" id="contact">
+
+      <div class="contact-card">
+
+        <div>
+
+          <span class="eyebrow">06 / CONNECT</span>
+
+          <h2>
+            Want to see
+            what I'm building?
+          </h2>
+
+          <p>
+            Explore the projects above or connect with me for ideas,
+            collaboration and conversations around technology.
+          </p>
+
+        </div>
+
+
+        <div class="contact-actions">
+
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-primary"
+          >
+            GitHub
             <span>↗</span>
           </a>
 
-          <a
-            href="#"
-            class="button button-light"
-            id="emailButton"
-          >
-            Contact me
+          <a href="#work" class="button button-secondary">
+            View projects
           </a>
 
         </div>
@@ -1069,34 +753,37 @@
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
   <footer class="footer">
 
-    <div>
+    <div class="footer-left">
 
-      <strong>Murali</strong>
+      <span class="footer-mark">M</span>
 
-      <span>
-        Ideas → Experiments → Things
-      </span>
+      <div>
+        <strong>Murali Manohar</strong>
+        <small>Ideas → Experiments → Things</small>
+      </div>
 
     </div>
 
-    <div>
 
-      <span>
-        © <span id="year"></span> Murali Manohar
-      </span>
+    <div class="footer-center">
+      Built with curiosity.
+    </div>
 
+
+    <div class="footer-right">
+      <span id="currentYear"></span>
     </div>
 
   </footer>
 
 
-  <!-- =====================================================
-       PROJECT MODAL
-  ====================================================== -->
+  <!-- PROJECT MODAL -->
 
   <div
     class="project-modal"
@@ -1104,26 +791,60 @@
     aria-hidden="true"
   >
 
-    <div
-      class="modal-backdrop"
-      id="modalBackdrop"
-    ></div>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
 
     <div class="modal-window">
 
       <button
         class="modal-close"
         id="modalClose"
+        type="button"
         aria-label="Close project"
       >
         ×
       </button>
 
-      <div id="modalContent"></div>
+      <div class="modal-icon" id="modalIcon">✦</div>
+
+      <span class="eyebrow" id="modalCategory">
+        PROJECT
+      </span>
+
+      <h2 id="modalTitle">
+        Project title
+      </h2>
+
+      <p id="modalDescription">
+        Project description.
+      </p>
+
+      <div class="modal-tags" id="modalTags"></div>
+
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-primary modal-link"
+        id="modalLink"
+      >
+        Open project ↗
+      </a>
 
     </div>
 
   </div>
+
+
+  <!-- BACK TO TOP -->
+
+  <button
+    class="back-top"
+    id="backTop"
+    type="button"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
 
 
   <script src="app.js"></script>
