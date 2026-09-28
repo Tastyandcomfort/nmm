@@ -297,7 +297,7 @@ const projects = [
     learning:
       "A portal becomes more useful when it reduces the number of places a person needs to look for information.",
 
-    tags:
+    tags:[
       "Healthcare",
       "Portal",
       "Information",
