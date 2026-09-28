@@ -1,6 +1,8 @@
 /* =========================================================
    MURALI MANOHAR — V3
+   PERFORMANCE OPTIMIZED
    Apple / Google Meet inspired visual language
+   Same visual design — lighter rendering
 ========================================================= */
 
 
@@ -18,17 +20,17 @@
 
   --line: rgba(0, 0, 0, 0.08);
 
-  --glass: rgba(255, 255, 255, 0.68);
-  --glass-strong: rgba(255, 255, 255, 0.88);
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.90);
 
   --accent: #0071e3;
   --accent-two: #5856d6;
 
   --shadow-small:
-    0 8px 30px rgba(0, 0, 0, 0.06);
+    0 6px 24px rgba(0, 0, 0, 0.055);
 
   --shadow:
-    0 25px 80px rgba(0, 0, 0, 0.10);
+    0 20px 65px rgba(0, 0, 0, 0.085);
 
   --radius-small: 18px;
   --radius: 28px;
@@ -37,7 +39,8 @@
   --max-width: 1180px;
 
   --transition:
-    0.35s cubic-bezier(.2,.7,.2,1);
+    0.25s cubic-bezier(.2,.7,.2,1);
+
 }
 
 
@@ -55,14 +58,14 @@ body.dark {
 
   --line: rgba(255, 255, 255, 0.10);
 
-  --glass: rgba(25, 26, 31, 0.72);
-  --glass-strong: rgba(20, 21, 25, 0.92);
+  --glass: rgba(25, 26, 31, 0.78);
+  --glass-strong: rgba(20, 21, 25, 0.94);
 
   --shadow-small:
-    0 8px 30px rgba(0, 0, 0, 0.25);
+    0 6px 24px rgba(0, 0, 0, 0.22);
 
   --shadow:
-    0 25px 80px rgba(0, 0, 0, 0.40);
+    0 20px 65px rgba(0, 0, 0, 0.34);
 
 }
 
@@ -90,12 +93,12 @@ body {
   background:
     radial-gradient(
       circle at 15% 10%,
-      rgba(0, 113, 227, 0.07),
+      rgba(0, 113, 227, 0.065),
       transparent 28%
     ),
     radial-gradient(
       circle at 85% 30%,
-      rgba(88, 86, 214, 0.06),
+      rgba(88, 86, 214, 0.055),
       transparent 28%
     ),
     var(--bg);
@@ -118,8 +121,14 @@ body {
   overflow-x: hidden;
 
   transition:
-    background var(--transition),
+    background-color var(--transition),
     color var(--transition);
+
+  /*
+    Helps browsers isolate the page's rendering work.
+  */
+  isolation: isolate;
+
 }
 
 
@@ -147,26 +156,35 @@ img {
 
 /* =========================================================
    AMBIENT BACKGROUND
+   Optimized: smaller blur + lower animation cost
 ========================================================= */
 
 .ambient {
 
   position: fixed;
 
-  width: 300px;
-  height: 300px;
+  width: 260px;
+  height: 260px;
 
   border-radius: 50%;
 
-  filter: blur(80px);
+  /*
+    Reduced from 80px.
+    The visual effect remains soft but is cheaper.
+  */
+  filter: blur(55px);
 
   pointer-events: none;
 
-  opacity: .35;
+  opacity: .25;
 
   z-index: -1;
 
-  animation: ambientFloat 12s ease-in-out infinite;
+  will-change: transform;
+
+  animation:
+    ambientFloat 16s ease-in-out infinite;
+
 }
 
 
@@ -175,7 +193,9 @@ img {
   top: 5%;
   left: -100px;
 
-  background: rgba(0, 113, 227, .18);
+  background:
+    rgba(0, 113, 227, .16);
+
 }
 
 
@@ -184,9 +204,11 @@ img {
   right: -120px;
   top: 35%;
 
-  background: rgba(88, 86, 214, .17);
+  background:
+    rgba(88, 86, 214, .15);
 
-  animation-delay: -4s;
+  animation-delay: -5s;
+
 }
 
 
@@ -195,9 +217,11 @@ img {
   bottom: -100px;
   left: 35%;
 
-  background: rgba(52, 199, 89, .10);
+  background:
+    rgba(52, 199, 89, .08);
 
-  animation-delay: -8s;
+  animation-delay: -10s;
+
 }
 
 
@@ -209,7 +233,7 @@ img {
   }
 
   50% {
-    transform: translate3d(20px, -25px, 0);
+    transform: translate3d(15px, -18px, 0);
   }
 
 }
@@ -227,10 +251,11 @@ img {
 
   z-index: 1000;
 
-  width: min(
-    calc(100% - 32px),
-    1120px
-  );
+  width:
+    min(
+      calc(100% - 32px),
+      1120px
+    );
 
   margin: 16px auto 0;
 
@@ -252,17 +277,21 @@ img {
   background:
     var(--glass);
 
+  /*
+    Reduced blur while retaining glass appearance.
+  */
   backdrop-filter:
-    blur(25px)
-    saturate(150%);
+    blur(16px)
+    saturate(135%);
 
   -webkit-backdrop-filter:
-    blur(25px)
-    saturate(150%);
+    blur(16px)
+    saturate(135%);
 
   border-radius: 22px;
 
-  box-shadow: var(--shadow-small);
+  box-shadow:
+    var(--shadow-small);
 
 }
 
@@ -276,6 +305,7 @@ img {
   gap: 10px;
 
   flex-shrink: 0;
+
 }
 
 
@@ -302,7 +332,8 @@ img {
   font-weight: 800;
 
   box-shadow:
-    0 7px 20px rgba(0, 113, 227, .22);
+    0 6px 16px rgba(0, 113, 227, .18);
+
 }
 
 
@@ -313,6 +344,7 @@ img {
   flex-direction: column;
 
   line-height: 1.1;
+
 }
 
 
@@ -355,7 +387,10 @@ img {
 
   font-weight: 600;
 
-  transition: var(--transition);
+  transition:
+    color .2s ease,
+    background-color .2s ease;
+
 }
 
 
@@ -390,14 +425,18 @@ img {
 
   cursor: pointer;
 
-  transition: var(--transition);
+  transition:
+    transform .2s ease,
+    background-color .2s ease;
 
 }
 
 
 .theme-button:hover {
 
-  transform: rotate(18deg) scale(1.05);
+  transform:
+    rotate(12deg)
+    scale(1.03);
 
 }
 
@@ -408,18 +447,21 @@ img {
 
 .section {
 
-  width: min(
-    calc(100% - 40px),
-    var(--max-width)
-  );
+  width:
+    min(
+      calc(100% - 40px),
+      var(--max-width)
+    );
 
   margin-inline: auto;
+
 }
 
 
 .content-section {
 
   padding-top: 120px;
+
 }
 
 
@@ -451,6 +493,7 @@ img {
   gap: 40px;
 
   margin-bottom: 48px;
+
 }
 
 
@@ -523,7 +566,11 @@ img {
   background:
     var(--glass);
 
-  backdrop-filter: blur(20px);
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
 
   color: var(--muted);
 
@@ -531,7 +578,8 @@ img {
 
   font-weight: 700;
 
-  box-shadow: var(--shadow-small);
+  box-shadow:
+    var(--shadow-small);
 
 }
 
@@ -546,7 +594,7 @@ img {
   background: #34c759;
 
   box-shadow:
-    0 0 0 5px rgba(52,199,89,.10);
+    0 0 0 5px rgba(52,199,89,.09);
 
 }
 
@@ -596,6 +644,7 @@ img {
   font-size: 17px;
 
   line-height: 1.75;
+
 }
 
 
@@ -608,6 +657,7 @@ img {
   gap: 12px;
 
   margin-top: 32px;
+
 }
 
 
@@ -638,7 +688,10 @@ img {
 
   font-weight: 700;
 
-  transition: var(--transition);
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    background-color .22s ease;
 
 }
 
@@ -657,7 +710,7 @@ img {
     );
 
   box-shadow:
-    0 10px 30px rgba(0, 113, 227, .18);
+    0 8px 25px rgba(0, 113, 227, .15);
 
 }
 
@@ -665,10 +718,10 @@ img {
 .button-primary:hover {
 
   transform:
-    translateY(-3px);
+    translateY(-2px);
 
   box-shadow:
-    0 16px 40px rgba(0, 113, 227, .25);
+    0 12px 30px rgba(0, 113, 227, .21);
 
 }
 
@@ -680,7 +733,11 @@ img {
   background:
     var(--glass);
 
-  backdrop-filter: blur(15px);
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
 
 }
 
@@ -688,7 +745,7 @@ img {
 .button-secondary:hover {
 
   transform:
-    translateY(-3px);
+    translateY(-2px);
 
   background:
     var(--glass-strong);
@@ -709,6 +766,7 @@ img {
   display: grid;
 
   place-items: center;
+
 }
 
 
@@ -718,7 +776,11 @@ img {
 
   z-index: 3;
 
-  width: min(420px, 85%);
+  width:
+    min(
+      420px,
+      85%
+    );
 
   min-height: 290px;
 
@@ -731,19 +793,25 @@ img {
     linear-gradient(
       145deg,
       rgba(255,255,255,.82),
-      rgba(255,255,255,.38)
+      rgba(255,255,255,.42)
     );
 
   box-shadow:
-    0 35px 100px rgba(0,0,0,.12);
+    0 28px 80px rgba(0,0,0,.10);
 
   backdrop-filter:
-    blur(30px);
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
 
   transform:
     rotate(-4deg);
 
-  transition: var(--transition);
+  transition:
+    transform .25s cubic-bezier(.2,.7,.2,1);
+
+  will-change: transform;
 
 }
 
@@ -753,8 +821,8 @@ body.dark .hero-card {
   background:
     linear-gradient(
       145deg,
-      rgba(35,36,43,.9),
-      rgba(15,16,20,.7)
+      rgba(35,36,43,.90),
+      rgba(15,16,20,.75)
     );
 
 }
@@ -764,7 +832,7 @@ body.dark .hero-card {
 
   transform:
     rotate(-1deg)
-    translateY(-7px);
+    translateY(-5px);
 
 }
 
@@ -812,6 +880,7 @@ body.dark .hero-card {
   font-weight: 800;
 
   letter-spacing: .1em;
+
 }
 
 
@@ -871,7 +940,9 @@ body.dark .hero-card {
     );
 
   animation:
-    progressMove 4s ease-in-out infinite alternate;
+    progressMove 5s ease-in-out infinite alternate;
+
+  will-change: width;
 
 }
 
@@ -914,6 +985,9 @@ body.dark .hero-card {
   border-radius: 50%;
 
   pointer-events: none;
+
+  will-change: transform;
+
 }
 
 
@@ -923,7 +997,8 @@ body.dark .hero-card {
   height: 420px;
 
   animation:
-    spin 25s linear infinite;
+    spin 32s linear infinite;
+
 }
 
 
@@ -932,10 +1007,11 @@ body.dark .hero-card {
   width: 570px;
   height: 570px;
 
-  opacity: .45;
+  opacity: .40;
 
   animation:
-    spin 40s linear infinite reverse;
+    spin 48s linear infinite reverse;
+
 }
 
 
@@ -975,13 +1051,18 @@ body.dark .hero-card {
     var(--glass-strong);
 
   backdrop-filter:
-    blur(25px);
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
 
   box-shadow:
     var(--shadow-small);
 
   animation:
-    floating 5s ease-in-out infinite;
+    floating 6s ease-in-out infinite;
+
+  will-change: transform;
 
 }
 
@@ -991,6 +1072,7 @@ body.dark .hero-card {
   display: block;
 
   font-size: 11px;
+
 }
 
 
@@ -1061,11 +1143,11 @@ body.dark .hero-card {
 
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0,0,0);
   }
 
   50% {
-    transform: translateY(-12px);
+    transform: translate3d(0,-9px,0);
   }
 
 }
@@ -1077,13 +1159,15 @@ body.dark .hero-card {
 
 .statement-section {
 
-  width: min(
-    calc(100% - 40px),
-    var(--max-width)
-  );
+  width:
+    min(
+      calc(100% - 40px),
+      var(--max-width)
+    );
 
   margin:
     50px auto 0;
+
 }
 
 
@@ -1102,7 +1186,10 @@ body.dark .hero-card {
     var(--glass);
 
   backdrop-filter:
-    blur(30px);
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
 
   box-shadow:
     var(--shadow);
@@ -1143,6 +1230,7 @@ body.dark .hero-card {
     repeat(4, 1fr);
 
   gap: 15px;
+
 }
 
 
@@ -1157,20 +1245,28 @@ body.dark .hero-card {
   border:
     1px solid var(--line);
 
-  border-radius: var(--radius);
+  border-radius:
+    var(--radius);
 
   background:
     var(--glass);
 
   backdrop-filter:
-    blur(25px);
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
 
   box-shadow:
     var(--shadow-small);
 
   overflow: hidden;
 
-  transition: var(--transition);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+
+  will-change: transform;
 
 }
 
@@ -1178,7 +1274,7 @@ body.dark .hero-card {
 .about-card:hover {
 
   transform:
-    translateY(-7px);
+    translateY(-5px);
 
   box-shadow:
     var(--shadow);
@@ -1214,6 +1310,7 @@ body.dark .hero-card {
   font-weight: 900;
 
   letter-spacing: -.08em;
+
 }
 
 
@@ -1226,6 +1323,7 @@ body.dark .hero-card {
   font-size: 24px;
 
   letter-spacing: -.04em;
+
 }
 
 
@@ -1270,6 +1368,7 @@ body.dark .hero-card {
   color: var(--accent);
 
   font-size: 20px;
+
 }
 
 
@@ -1286,6 +1385,7 @@ body.dark .hero-card {
   gap: 7px;
 
   margin-bottom: 25px;
+
 }
 
 
@@ -1310,7 +1410,9 @@ body.dark .hero-card {
 
   cursor: pointer;
 
-  transition: var(--transition);
+  transition:
+    color .2s ease,
+    background-color .2s ease;
 
 }
 
@@ -1369,16 +1471,21 @@ body.dark .hero-card {
     var(--glass);
 
   backdrop-filter:
-    blur(25px);
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
 
   overflow: hidden;
 
   cursor: pointer;
 
   transition:
-    transform var(--transition),
-    box-shadow var(--transition),
-    border-color var(--transition);
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+
+  will-change: transform;
 
 }
 
@@ -1400,7 +1507,7 @@ body.dark .hero-card {
   background:
     radial-gradient(
       circle,
-      rgba(0,113,227,.15),
+      rgba(0,113,227,.13),
       transparent 70%
     );
 
@@ -1412,13 +1519,13 @@ body.dark .hero-card {
 .project-card:hover {
 
   transform:
-    translateY(-8px);
+    translateY(-6px);
 
   box-shadow:
     var(--shadow);
 
   border-color:
-    rgba(0,113,227,.18);
+    rgba(0,113,227,.16);
 
 }
 
@@ -1430,6 +1537,7 @@ body.dark .hero-card {
   justify-content: space-between;
 
   align-items: flex-start;
+
 }
 
 
@@ -1456,9 +1564,11 @@ body.dark .hero-card {
 
 .project-category {
 
-  padding: 6px 9px;
+  padding:
+    6px 9px;
 
-  border-radius: 100px;
+  border-radius:
+    100px;
 
   background:
     rgba(127,127,127,.08);
@@ -1472,6 +1582,7 @@ body.dark .hero-card {
   text-transform: uppercase;
 
   letter-spacing: .08em;
+
 }
 
 
@@ -1482,6 +1593,7 @@ body.dark .hero-card {
   font-size: 30px;
 
   letter-spacing: -.045em;
+
 }
 
 
@@ -1496,6 +1608,7 @@ body.dark .hero-card {
   font-size: 13px;
 
   line-height: 1.7;
+
 }
 
 
@@ -1510,6 +1623,7 @@ body.dark .hero-card {
   gap: 15px;
 
   margin-top: 25px;
+
 }
 
 
@@ -1520,14 +1634,17 @@ body.dark .hero-card {
   flex-wrap: wrap;
 
   gap: 5px;
+
 }
 
 
 .project-tags span {
 
-  padding: 6px 8px;
+  padding:
+    6px 8px;
 
-  border-radius: 8px;
+  border-radius:
+    8px;
 
   background:
     rgba(127,127,127,.07);
@@ -1558,7 +1675,8 @@ body.dark .hero-card {
   color:
     var(--bg);
 
-  transition: var(--transition);
+  transition:
+    transform .2s ease;
 
 }
 
@@ -1566,7 +1684,7 @@ body.dark .hero-card {
 .project-card:hover .project-arrow {
 
   transform:
-    translate(3px,-3px);
+    translate3d(3px,-3px,0);
 
 }
 
@@ -1583,6 +1701,7 @@ body.dark .hero-card {
     repeat(3, 1fr);
 
   gap: 15px;
+
 }
 
 
@@ -1604,9 +1723,16 @@ body.dark .hero-card {
     var(--glass);
 
   backdrop-filter:
-    blur(25px);
+    blur(16px);
 
-  transition: var(--transition);
+  -webkit-backdrop-filter:
+    blur(16px);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+
+  will-change: transform;
 
 }
 
@@ -1614,7 +1740,7 @@ body.dark .hero-card {
 .ability-card:hover {
 
   transform:
-    translateY(-6px);
+    translateY(-5px);
 
   box-shadow:
     var(--shadow-small);
@@ -1626,6 +1752,7 @@ body.dark .hero-card {
 
   grid-column:
     span 2;
+
 }
 
 
@@ -1638,6 +1765,7 @@ body.dark .hero-card {
   font-weight: 900;
 
   letter-spacing: .1em;
+
 }
 
 
@@ -1648,6 +1776,7 @@ body.dark .hero-card {
   font-size: 26px;
 
   letter-spacing: -.04em;
+
 }
 
 
@@ -1662,6 +1791,7 @@ body.dark .hero-card {
   font-size: 13px;
 
   line-height: 1.7;
+
 }
 
 
@@ -1680,14 +1810,17 @@ body.dark .hero-card {
   flex-wrap: wrap;
 
   gap: 6px;
+
 }
 
 
 .ability-tags span {
 
-  padding: 6px 9px;
+  padding:
+    6px 9px;
 
-  border-radius: 8px;
+  border-radius:
+    8px;
 
   background:
     rgba(127,127,127,.08);
@@ -1697,6 +1830,7 @@ body.dark .hero-card {
   font-size: 9px;
 
   font-weight: 700;
+
 }
 
 
@@ -1727,13 +1861,18 @@ body.dark .hero-card {
     var(--glass);
 
   backdrop-filter:
-    blur(25px);
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
+
 }
 
 
 .process-step {
 
   min-height: 210px;
+
 }
 
 
@@ -1757,6 +1896,7 @@ body.dark .hero-card {
   font-size: 11px;
 
   font-weight: 900;
+
 }
 
 
@@ -1773,6 +1913,7 @@ body.dark .hero-card {
   font-weight: 900;
 
   letter-spacing: .12em;
+
 }
 
 
@@ -1783,6 +1924,7 @@ body.dark .hero-card {
   font-size: 27px;
 
   letter-spacing: -.04em;
+
 }
 
 
@@ -1795,6 +1937,7 @@ body.dark .hero-card {
   font-size: 12px;
 
   line-height: 1.6;
+
 }
 
 
@@ -1803,6 +1946,7 @@ body.dark .hero-card {
   color: var(--muted);
 
   font-size: 24px;
+
 }
 
 
@@ -1831,7 +1975,10 @@ body.dark .hero-card {
     var(--glass);
 
   backdrop-filter:
-    blur(30px);
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
 
   box-shadow:
     var(--shadow);
@@ -1857,6 +2004,7 @@ body.dark .hero-card {
   line-height: .95;
 
   letter-spacing: -.06em;
+
 }
 
 
@@ -1871,6 +2019,7 @@ body.dark .hero-card {
   font-size: 14px;
 
   line-height: 1.8;
+
 }
 
 
@@ -1883,23 +2032,27 @@ body.dark .hero-card {
   gap: 7px;
 
   margin-top: 30px;
+
 }
 
 
 .lab-pills span {
 
-  padding: 8px 11px;
+  padding:
+    8px 11px;
 
   border:
     1px solid var(--line);
 
-  border-radius: 100px;
+  border-radius:
+    100px;
 
   color: var(--muted);
 
   font-size: 10px;
 
   font-weight: 700;
+
 }
 
 
@@ -1918,9 +2071,10 @@ body.dark .hero-card {
   background:
     radial-gradient(
       circle at center,
-      rgba(0,113,227,.10),
+      rgba(0,113,227,.09),
       transparent 55%
     );
+
 }
 
 
@@ -1934,7 +2088,10 @@ body.dark .hero-card {
     1px solid var(--line);
 
   animation:
-    labSpin 16s linear infinite;
+    labSpin 22s linear infinite;
+
+  will-change: transform;
+
 }
 
 
@@ -1942,6 +2099,7 @@ body.dark .hero-card {
 
   width: 220px;
   height: 220px;
+
 }
 
 
@@ -1950,9 +2108,10 @@ body.dark .hero-card {
   width: 350px;
   height: 350px;
 
-  animation-duration: 25s;
+  animation-duration: 32s;
 
   animation-direction: reverse;
+
 }
 
 
@@ -1961,7 +2120,8 @@ body.dark .hero-card {
   width: 480px;
   height: 480px;
 
-  animation-duration: 35s;
+  animation-duration: 44s;
+
 }
 
 
@@ -2002,7 +2162,10 @@ body.dark .hero-card {
     var(--glass-strong);
 
   backdrop-filter:
-    blur(25px);
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
 
   box-shadow:
     var(--shadow);
@@ -2019,6 +2182,7 @@ body.dark .hero-card {
   font-weight: 900;
 
   letter-spacing: .15em;
+
 }
 
 
@@ -2035,10 +2199,11 @@ body.dark .hero-card {
 
 .closing-section {
 
-  width: min(
-    calc(100% - 40px),
-    var(--max-width)
-  );
+  width:
+    min(
+      calc(100% - 40px),
+      var(--max-width)
+    );
 
   margin:
     120px auto 0;
@@ -2063,6 +2228,7 @@ body.dark .hero-card {
   line-height: .88;
 
   letter-spacing: -.075em;
+
 }
 
 
@@ -2082,6 +2248,7 @@ body.dark .hero-card {
 .contact-section {
 
   padding-bottom: 120px;
+
 }
 
 
@@ -2124,6 +2291,7 @@ body.dark .hero-card {
   line-height: .94;
 
   letter-spacing: -.06em;
+
 }
 
 
@@ -2138,6 +2306,7 @@ body.dark .hero-card {
   font-size: 14px;
 
   line-height: 1.7;
+
 }
 
 
@@ -2150,6 +2319,7 @@ body.dark .hero-card {
   gap: 9px;
 
   flex-shrink: 0;
+
 }
 
 
@@ -2159,10 +2329,11 @@ body.dark .hero-card {
 
 .footer {
 
-  width: min(
-    calc(100% - 40px),
-    var(--max-width)
-  );
+  width:
+    min(
+      calc(100% - 40px),
+      var(--max-width)
+    );
 
   margin:
     0 auto;
@@ -2183,6 +2354,7 @@ body.dark .hero-card {
   color: var(--muted);
 
   font-size: 10px;
+
 }
 
 
@@ -2193,6 +2365,7 @@ body.dark .hero-card {
   align-items: center;
 
   gap: 9px;
+
 }
 
 
@@ -2214,6 +2387,7 @@ body.dark .hero-card {
     var(--bg);
 
   font-weight: 900;
+
 }
 
 
@@ -2224,6 +2398,7 @@ body.dark .hero-card {
   color: var(--text);
 
   font-size: 11px;
+
 }
 
 
@@ -2239,12 +2414,14 @@ body.dark .hero-card {
 .footer-center {
 
   text-align: center;
+
 }
 
 
 .footer-right {
 
   text-align: right;
+
 }
 
 
@@ -2267,6 +2444,7 @@ body.dark .hero-card {
   justify-content: center;
 
   padding: 20px;
+
 }
 
 
@@ -2286,8 +2464,16 @@ body.dark .hero-card {
   background:
     rgba(0,0,0,.42);
 
+  /*
+    Reduced backdrop blur substantially.
+    This is one of the biggest mobile performance wins.
+  */
   backdrop-filter:
-    blur(15px);
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
 }
 
 
@@ -2297,10 +2483,11 @@ body.dark .hero-card {
 
   z-index: 2;
 
-  width: min(
-    600px,
-    100%
-  );
+  width:
+    min(
+      600px,
+      100%
+    );
 
   padding:
     40px;
@@ -2315,13 +2502,17 @@ body.dark .hero-card {
     var(--glass-strong);
 
   backdrop-filter:
-    blur(35px);
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
 
   box-shadow:
-    0 40px 120px rgba(0,0,0,.30);
+    0 30px 90px rgba(0,0,0,.25);
 
   animation:
-    modalIn .35s cubic-bezier(.2,.7,.2,1);
+    modalIn .25s cubic-bezier(.2,.7,.2,1);
+
 }
 
 
@@ -2332,8 +2523,8 @@ body.dark .hero-card {
     opacity: 0;
 
     transform:
-      translateY(20px)
-      scale(.97);
+      translate3d(0,15px,0)
+      scale(.98);
 
   }
 
@@ -2342,7 +2533,7 @@ body.dark .hero-card {
     opacity: 1;
 
     transform:
-      translateY(0)
+      translate3d(0,0,0)
       scale(1);
 
   }
@@ -2376,6 +2567,7 @@ body.dark .hero-card {
   font-size: 24px;
 
   cursor: pointer;
+
 }
 
 
@@ -2398,6 +2590,7 @@ body.dark .hero-card {
   color: var(--accent);
 
   font-size: 24px;
+
 }
 
 
@@ -2409,6 +2602,7 @@ body.dark .hero-card {
   line-height: .95;
 
   letter-spacing: -.055em;
+
 }
 
 
@@ -2421,6 +2615,7 @@ body.dark .hero-card {
   font-size: 14px;
 
   line-height: 1.75;
+
 }
 
 
@@ -2435,14 +2630,17 @@ body.dark .hero-card {
   margin-top: 22px;
 
   margin-bottom: 28px;
+
 }
 
 
 .modal-tags span {
 
-  padding: 7px 9px;
+  padding:
+    7px 9px;
 
-  border-radius: 8px;
+  border-radius:
+    8px;
 
   background:
     rgba(127,127,127,.08);
@@ -2483,7 +2681,10 @@ body.dark .hero-card {
     var(--glass-strong);
 
   backdrop-filter:
-    blur(20px);
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
 
   color: var(--text);
 
@@ -2497,9 +2698,12 @@ body.dark .hero-card {
   pointer-events: none;
 
   transform:
-    translateY(10px);
+    translate3d(0,10px,0);
 
-  transition: var(--transition);
+  transition:
+    opacity .2s ease,
+    transform .2s ease;
+
 }
 
 
@@ -2510,7 +2714,7 @@ body.dark .hero-card {
   pointer-events: auto;
 
   transform:
-    translateY(0);
+    translate3d(0,0,0);
 
 }
 
@@ -2524,11 +2728,11 @@ body.dark .hero-card {
   opacity: 0;
 
   transform:
-    translateY(20px);
+    translate3d(0,14px,0);
 
   transition:
-    opacity .7s ease,
-    transform .7s cubic-bezier(.2,.7,.2,1);
+    opacity .45s ease,
+    transform .45s cubic-bezier(.2,.7,.2,1);
 
 }
 
@@ -2538,13 +2742,63 @@ body.dark .hero-card {
   opacity: 1;
 
   transform:
-    translateY(0);
+    translate3d(0,0,0);
 
 }
 
 
 /* =========================================================
-   MOBILE
+   TOUCH / MOBILE PERFORMANCE
+========================================================= */
+
+@media (hover: none) {
+
+  /*
+    Hover effects do not provide value on touch devices.
+    Removing them prevents unnecessary style work.
+  */
+
+  .button-primary:hover,
+  .button-secondary:hover,
+  .about-card:hover,
+  .project-card:hover,
+  .ability-card:hover,
+  .hero-card:hover {
+
+    transform: none;
+
+  }
+
+
+  .project-card:hover {
+
+    box-shadow:
+      var(--shadow-small);
+
+    border-color:
+      var(--line);
+
+  }
+
+
+  .project-card:hover .project-arrow {
+
+    transform: none;
+
+  }
+
+
+  .theme-button:hover {
+
+    transform: none;
+
+  }
+
+}
+
+
+/* =========================================================
+   MEDIUM
 ========================================================= */
 
 @media (max-width: 980px) {
@@ -2653,6 +2907,10 @@ body.dark .hero-card {
 }
 
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 680px) {
 
   .topbar {
@@ -2723,6 +2981,10 @@ body.dark .hero-card {
   }
 
 
+  /*
+    Smaller orbit sizes = less compositing work.
+  */
+
   .orbit-two {
 
     width: 390px;
@@ -2735,6 +2997,25 @@ body.dark .hero-card {
 
     width: 300px;
     height: 300px;
+
+  }
+
+
+  /*
+    Slightly slower decorative animation
+    on smaller devices.
+  */
+
+  .orbit-one {
+
+    animation-duration: 40s;
+
+  }
+
+
+  .orbit-two {
+
+    animation-duration: 55s;
 
   }
 
@@ -2852,7 +3133,8 @@ body.dark .hero-card {
 
     min-height: auto;
 
-    padding: 10px 0;
+    padding:
+      10px 0;
 
   }
 
@@ -2909,7 +3191,69 @@ body.dark .hero-card {
 
   .modal-window {
 
-    padding: 30px 24px;
+    padding:
+      30px 24px;
+
+  }
+
+
+  /*
+    Major mobile optimization:
+    lower glass blur because mobile GPUs
+    handle multiple backdrop filters poorly.
+  */
+
+  .topbar,
+  .status-pill,
+  .button-secondary,
+  .hero-card,
+  .floating-card,
+  .statement-card,
+  .about-card,
+  .project-card,
+  .ability-card,
+  .process-line,
+  .lab-card,
+  .lab-center,
+  .modal-window,
+  .back-top {
+
+    backdrop-filter:
+      blur(10px);
+
+    -webkit-backdrop-filter:
+      blur(10px);
+
+  }
+
+
+  /*
+    Decorative background animation is less
+    important on a small screen.
+  */
+
+  .ambient {
+
+    opacity: .18;
+
+    animation-duration:
+      24s;
+
+  }
+
+
+  /*
+    Slightly lighter reveal animation.
+  */
+
+  .reveal {
+
+    transform:
+      translate3d(0,10px,0);
+
+    transition:
+      opacity .35s ease,
+      transform .35s ease;
 
   }
 
@@ -2917,22 +3261,98 @@ body.dark .hero-card {
 
 
 /* =========================================================
-   REDUCED MOTION
+   LOW POWER / REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
+  html {
+
+    scroll-behavior:
+      auto !important;
+
+  }
+
 
   *,
   *::before,
   *::after {
 
-    scroll-behavior: auto !important;
+    animation-duration:
+      .01ms !important;
 
-    animation-duration: .01ms !important;
+    animation-iteration-count:
+      1 !important;
 
-    animation-iteration-count: 1 !important;
+    transition-duration:
+      .01ms !important;
 
-    transition-duration: .01ms !important;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL / LOW WIDTH DEVICES
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .hero-visual {
+
+    min-height: 350px;
+
+  }
+
+
+  .hero-card {
+
+    width: 94%;
+
+  }
+
+
+  .hero-card-content {
+
+    padding: 28px;
+
+  }
+
+
+  .floating-card {
+
+    padding:
+      9px 11px;
+
+  }
+
+
+  .floating-card strong {
+
+    font-size: 10px;
+
+  }
+
+
+  .floating-card small {
+
+    font-size: 8px;
+
+  }
+
+
+  .orbit-one {
+
+    width: 260px;
+    height: 260px;
+
+  }
+
+
+  .orbit-two {
+
+    width: 330px;
+    height: 330px;
 
   }
 
