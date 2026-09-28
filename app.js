@@ -137,7 +137,7 @@ const projects = [
     ],
 
     url:
-      "https://sites.google.com/view/imheretohelpyou/portal?authuser=0"
+      "https://tastyandcomfort.github.io/nmm/#home"
   },
 
 
@@ -160,7 +160,7 @@ const projects = [
     ],
 
     url:
-      "https://tandcfromnmm.github.io/Safe-Route/"
+      "https://carehospitalsportal.github.io/Care-portal/"
   }
 
 ];
