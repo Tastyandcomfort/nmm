@@ -1,6 +1,9 @@
 /* =========================================================
    MURALI MANOHAR — V3
-   Main application
+   OPTIMIZED MAIN APPLICATION
+   ---------------------------------------------------------
+   Drop-in replacement for the existing app.js
+   Visual design: UNCHANGED
 ========================================================= */
 
 
@@ -32,7 +35,6 @@ const projects = [
       "https://tastyandcomfort.github.io/T-C/"
   },
 
-
   {
     id: "former",
     title: "Former",
@@ -52,7 +54,6 @@ const projects = [
     url:
       "https://tastyandcomfort.github.io/Former/"
   },
-
 
   {
     id: "find-near-care",
@@ -75,7 +76,6 @@ const projects = [
       "https://muralimanoharcoin-max.github.io/Find-near-care/"
   },
 
-
   {
     id: "find-doctor-care",
     title: "Find Doctor CARE",
@@ -96,7 +96,6 @@ const projects = [
     url:
       "https://tandcfromnmm.github.io/Find-doctor-care.com/"
   },
-
 
   {
     id: "care-portal",
@@ -119,7 +118,6 @@ const projects = [
       "https://sites.google.com/view/imheretohelpyou/portal-test?authuser=0"
   },
 
-
   {
     id: "portal",
     title: "Personal Web Portal",
@@ -139,7 +137,6 @@ const projects = [
     url:
       "https://tastyandcomfort.github.io/nmm/#home"
   },
-
 
   {
     id: "safe-route",
@@ -167,53 +164,80 @@ const projects = [
 
 
 /* =========================================================
-   DOM ELEMENTS
+   CACHE DOM ELEMENTS
+   ---------------------------------------------------------
+   Query DOM once instead of repeatedly searching the page.
 ========================================================= */
 
+const $ = selector =>
+  document.querySelector(selector);
+
+const $$ = selector =>
+  Array.from(document.querySelectorAll(selector));
+
+
 const projectsGrid =
-  document.getElementById("projectsGrid");
+  $("#projectsGrid");
 
 const projectFilter =
-  document.getElementById("projectFilter");
+  $("#projectFilter");
 
 const themeButton =
-  document.getElementById("themeButton");
+  $("#themeButton");
 
 const currentYear =
-  document.getElementById("currentYear");
+  $("#currentYear");
 
 const projectModal =
-  document.getElementById("projectModal");
+  $("#projectModal");
 
 const modalBackdrop =
-  document.getElementById("modalBackdrop");
+  $("#modalBackdrop");
 
 const modalClose =
-  document.getElementById("modalClose");
+  $("#modalClose");
 
 const modalIcon =
-  document.getElementById("modalIcon");
+  $("#modalIcon");
 
 const modalCategory =
-  document.getElementById("modalCategory");
+  $("#modalCategory");
 
 const modalTitle =
-  document.getElementById("modalTitle");
+  $("#modalTitle");
 
 const modalDescription =
-  document.getElementById("modalDescription");
+  $("#modalDescription");
 
 const modalTags =
-  document.getElementById("modalTags");
+  $("#modalTags");
 
 const modalLink =
-  document.getElementById("modalLink");
+  $("#modalLink");
 
 const backTop =
-  document.getElementById("backTop");
+  $("#backTop");
 
 const navLinks =
-  document.querySelectorAll(".nav-link");
+  $$(".nav-link");
+
+
+/* =========================================================
+   DEVICE / MOTION SETTINGS
+========================================================= */
+
+const reducedMotion =
+  window.matchMedia &&
+  window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+
+const finePointer =
+  window.matchMedia &&
+  window.matchMedia(
+    "(pointer:fine)"
+  ).matches;
 
 
 /* =========================================================
@@ -223,7 +247,7 @@ const navLinks =
 if (currentYear) {
 
   currentYear.textContent =
-    new Date().getFullYear();
+    String(new Date().getFullYear());
 
 }
 
@@ -243,6 +267,16 @@ function createProjectCard(project) {
   article.dataset.category =
     project.category;
 
+  /*
+    Build the tags only once.
+  */
+
+  const tagsHTML =
+    project.tags
+      .map(tag => `<span>${tag}</span>`)
+      .join("");
+
+
   article.innerHTML = `
 
     <div>
@@ -259,11 +293,9 @@ function createProjectCard(project) {
 
       </div>
 
-
       <h3>
         ${project.title}
       </h3>
-
 
       <p>
         ${project.description}
@@ -271,15 +303,10 @@ function createProjectCard(project) {
 
     </div>
 
-
     <div class="project-bottom">
 
       <div class="project-tags">
-
-        ${project.tags
-          .map(tag => `<span>${tag}</span>`)
-          .join("")}
-
+        ${tagsHTML}
       </div>
 
       <span class="project-arrow">
@@ -291,10 +318,13 @@ function createProjectCard(project) {
   `;
 
 
-  article.addEventListener(
-    "click",
-    () => openProject(project)
-  );
+  /*
+    Store the project ID instead of creating
+    a separate listener for every card.
+  */
+
+  article.dataset.projectId =
+    project.id;
 
 
   return article;
@@ -303,43 +333,123 @@ function createProjectCard(project) {
 
 
 /* =========================================================
+   PROJECT LOOKUP
+========================================================= */
+
+const projectMap =
+  new Map(
+    projects.map(project => [
+      project.id,
+      project
+    ])
+  );
+
+
+/* =========================================================
    RENDER PROJECTS
 ========================================================= */
 
+let currentFilter = "all";
+
+
 function renderProjects(filter = "all") {
 
-  if (!projectsGrid) return;
+  if (!projectsGrid) {
+    return;
+  }
 
-  projectsGrid.innerHTML = "";
+
+  currentFilter =
+    filter;
 
 
-  const visibleProjects =
-    projects.filter(project => {
+  /*
+    Build everything in a DocumentFragment.
+    This minimizes browser re-layout work.
+  */
 
-      if (filter === "all") {
-        return true;
+  const fragment =
+    document.createDocumentFragment();
+
+
+  for (
+    const project of projects
+  ) {
+
+    if (
+      filter !== "all" &&
+      project.category !== filter
+    ) {
+      continue;
+    }
+
+
+    fragment.appendChild(
+      createProjectCard(project)
+    );
+
+  }
+
+
+  /*
+    One DOM replacement instead of repeatedly
+    adding and repainting individual cards.
+  */
+
+  projectsGrid.replaceChildren(
+    fragment
+  );
+
+
+  /*
+    Reveal only after the cards are inserted.
+  */
+
+  requestAnimationFrame(
+    observeRevealElements
+  );
+
+}
+
+
+/* =========================================================
+   PROJECT CARD CLICK HANDLER
+   ---------------------------------------------------------
+   Event delegation = one listener instead
+   of one listener per project card.
+========================================================= */
+
+if (projectsGrid) {
+
+  projectsGrid.addEventListener(
+    "click",
+    event => {
+
+      const card =
+        event.target.closest(
+          ".project-card"
+        );
+
+
+      if (!card) {
+        return;
       }
 
-      return project.category === filter;
 
-    });
-
-
-  visibleProjects.forEach(project => {
-
-    const card =
-      createProjectCard(project);
-
-    projectsGrid.appendChild(card);
-
-  });
+      const projectId =
+        card.dataset.projectId;
 
 
-  requestAnimationFrame(() => {
+      const project =
+        projectMap.get(projectId);
 
-    observeRevealElements();
 
-  });
+      if (project) {
+        openProject(project);
+      }
+
+    }
+  );
 
 }
 
@@ -359,26 +469,49 @@ if (projectFilter) {
           ".filter-button"
         );
 
-      if (!button) return;
 
-
-      document
-        .querySelectorAll(".filter-button")
-        .forEach(item => {
-
-          item.classList.remove(
-            "active"
-          );
-
-        });
-
-
-      button.classList.add("active");
+      if (!button) {
+        return;
+      }
 
 
       const filter =
         button.dataset.filter ||
         "all";
+
+
+      /*
+        Avoid rendering again if the user
+        clicks the already active filter.
+      */
+
+      if (
+        filter === currentFilter
+      ) {
+
+        return;
+
+      }
+
+
+      /*
+        Update button states efficiently.
+      */
+
+      const buttons =
+        projectFilter.querySelectorAll(
+          ".filter-button"
+        );
+
+
+      buttons.forEach(item => {
+
+        item.classList.toggle(
+          "active",
+          item === button
+        );
+
+      });
 
 
       renderProjects(filter);
@@ -395,30 +528,59 @@ if (projectFilter) {
 
 function openProject(project) {
 
-  if (!projectModal) return;
+  if (!projectModal) {
+    return;
+  }
 
 
-  modalIcon.textContent =
-    project.icon;
+  if (modalIcon) {
 
-  modalCategory.textContent =
-    project.categoryLabel;
+    modalIcon.textContent =
+      project.icon;
 
-  modalTitle.textContent =
-    project.title;
-
-  modalDescription.textContent =
-    project.description;
+  }
 
 
-  modalTags.innerHTML =
-    project.tags
-      .map(tag => `<span>${tag}</span>`)
-      .join("");
+  if (modalCategory) {
+
+    modalCategory.textContent =
+      project.categoryLabel;
+
+  }
 
 
-  modalLink.href =
-    project.url;
+  if (modalTitle) {
+
+    modalTitle.textContent =
+      project.title;
+
+  }
+
+
+  if (modalDescription) {
+
+    modalDescription.textContent =
+      project.description;
+
+  }
+
+
+  if (modalTags) {
+
+    modalTags.innerHTML =
+      project.tags
+        .map(tag => `<span>${tag}</span>`)
+        .join("");
+
+  }
+
+
+  if (modalLink) {
+
+    modalLink.href =
+      project.url;
+
+  }
 
 
   projectModal.classList.add(
@@ -443,7 +605,9 @@ function openProject(project) {
 
 function closeProject() {
 
-  if (!projectModal) return;
+  if (!projectModal) {
+    return;
+  }
 
 
   projectModal.classList.remove(
@@ -482,12 +646,23 @@ if (modalBackdrop) {
 }
 
 
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
 document.addEventListener(
   "keydown",
   event => {
 
     if (
-      event.key === "Escape" &&
+      event.key !== "Escape"
+    ) {
+      return;
+    }
+
+
+    if (
+      projectModal &&
       projectModal.classList.contains(
         "open"
       )
@@ -507,23 +682,22 @@ document.addEventListener(
 
 function applyTheme(theme) {
 
-  if (theme === "dark") {
+  const dark =
+    theme === "dark";
 
-    document.body.classList.add(
-      "dark"
-    );
 
-    themeButton.textContent =
-      "☀";
+  document.body.classList.toggle(
+    "dark",
+    dark
+  );
 
-  } else {
 
-    document.body.classList.remove(
-      "dark"
-    );
+  if (themeButton) {
 
     themeButton.textContent =
-      "◐";
+      dark
+        ? "☀"
+        : "◐";
 
   }
 
@@ -538,7 +712,7 @@ function getSavedTheme() {
       "murali-v3-theme"
     );
 
-  } catch (error) {
+  } catch {
 
     return null;
 
@@ -556,21 +730,33 @@ function saveTheme(theme) {
       theme
     );
 
-  } catch (error) {
+  } catch {
 
-    /* localStorage unavailable */
+    /*
+      Storage can be unavailable in
+      private/restricted browser modes.
+    */
+
   }
 
 }
 
 
+/*
+  Detect theme once during startup.
+*/
+
 const savedTheme =
   getSavedTheme();
 
 
-if (savedTheme) {
+if (savedTheme === "dark") {
 
-  applyTheme(savedTheme);
+  applyTheme("dark");
+
+} else if (savedTheme === "light") {
+
+  applyTheme("light");
 
 } else if (
   window.matchMedia &&
@@ -588,20 +774,24 @@ if (savedTheme) {
 }
 
 
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
 if (themeButton) {
 
   themeButton.addEventListener(
     "click",
     () => {
 
-      const isDark =
+      const dark =
         document.body.classList.contains(
           "dark"
         );
 
 
       const nextTheme =
-        isDark
+        dark
           ? "light"
           : "dark";
 
@@ -617,11 +807,38 @@ if (themeButton) {
 
 
 /* =========================================================
-   SCROLL REVEAL
+   REVEAL SYSTEM
 ========================================================= */
 
-let revealObserver = null;
+let revealObserver =
+  null;
 
+
+function revealImmediately() {
+
+  const elements =
+    document.querySelectorAll(
+      ".reveal:not(.visible)"
+    );
+
+
+  elements.forEach(
+    element => {
+
+      element.classList.add(
+        "visible"
+      );
+
+    }
+  );
+
+}
+
+
+/*
+  If the user prefers reduced motion,
+  don't create an IntersectionObserver.
+*/
 
 function observeRevealElements() {
 
@@ -631,14 +848,17 @@ function observeRevealElements() {
     );
 
 
-  if (!("IntersectionObserver" in window)) {
+  if (!elements.length) {
+    return;
+  }
 
-    elements.forEach(
-      element =>
-        element.classList.add(
-          "visible"
-        )
-    );
+
+  if (
+    reducedMotion ||
+    !("IntersectionObserver" in window)
+  ) {
+
+    revealImmediately();
 
     return;
 
@@ -651,46 +871,54 @@ function observeRevealElements() {
       new IntersectionObserver(
         entries => {
 
-          entries.forEach(entry => {
+          for (
+            const entry of entries
+          ) {
 
             if (
-              entry.isIntersecting
+              !entry.isIntersecting
             ) {
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              revealObserver.unobserve(
-                entry.target
-              );
-
+              continue;
             }
 
-          });
+
+            entry.target.classList.add(
+              "visible"
+            );
+
+
+            revealObserver.unobserve(
+              entry.target
+            );
+
+          }
 
         },
         {
-          threshold: .08
+          threshold: 0.05,
+          rootMargin:
+            "0px 0px 80px 0px"
         }
       );
 
   }
 
 
-  elements.forEach(element => {
+  elements.forEach(
+    element => {
 
-    revealObserver.observe(
-      element
-    );
+      revealObserver.observe(
+        element
+      );
 
-  });
+    }
+  );
 
 }
 
 
 /* =========================================================
-   ADD REVEAL TO STATIC SECTIONS
+   STATIC REVEAL ELEMENTS
 ========================================================= */
 
 function prepareStaticReveal() {
@@ -708,27 +936,27 @@ function prepareStaticReveal() {
   ];
 
 
-  selectors.forEach(selector => {
+  for (
+    const selector of selectors
+  ) {
 
-    document
-      .querySelectorAll(selector)
-      .forEach(element => {
+    const elements =
+      document.querySelectorAll(
+        selector
+      );
 
-        if (
-          !element.classList.contains(
-            "reveal"
-          )
-        ) {
 
-          element.classList.add(
-            "reveal"
-          );
+    elements.forEach(
+      element => {
 
-        }
+        element.classList.add(
+          "reveal"
+        );
 
-      });
+      }
+    );
 
-  });
+  }
 
 }
 
@@ -738,12 +966,11 @@ function prepareStaticReveal() {
 ========================================================= */
 
 const observedSections =
-  document.querySelectorAll(
-    "main section[id]"
-  );
+  $$("main section[id]");
 
 
-let sectionObserver = null;
+let sectionObserver =
+  null;
 
 
 function setupSectionObserver() {
@@ -755,14 +982,31 @@ function setupSectionObserver() {
   }
 
 
+  if (
+    !observedSections.length ||
+    !navLinks.length
+  ) {
+    return;
+  }
+
+
   sectionObserver =
     new IntersectionObserver(
       entries => {
 
-        entries.forEach(entry => {
+        /*
+          Only update navigation when
+          an actually visible section changes.
+        */
 
-          if (!entry.isIntersecting) {
-            return;
+        for (
+          const entry of entries
+        ) {
+
+          if (
+            !entry.isIntersecting
+          ) {
+            continue;
           }
 
 
@@ -770,71 +1014,168 @@ function setupSectionObserver() {
             entry.target.id;
 
 
-          navLinks.forEach(link => {
+          navLinks.forEach(
+            link => {
 
-            const linkTarget =
-              link.getAttribute(
-                "href"
+              const target =
+                link.getAttribute(
+                  "href"
+                );
+
+
+              link.classList.toggle(
+                "active",
+                target === `#${id}`
               );
 
+            }
+          );
 
-            link.classList.toggle(
-              "active",
-              linkTarget === `#${id}`
-            );
-
-          });
-
-        });
+        }
 
       },
       {
         rootMargin:
-          "-35% 0px -55% 0px"
+          "-35% 0px -55% 0px",
+        threshold: 0
       }
     );
 
 
-  observedSections.forEach(section => {
+  observedSections.forEach(
+    section => {
 
-    sectionObserver.observe(
-      section
-    );
+      sectionObserver.observe(
+        section
+      );
 
-  });
+    }
+  );
 
 }
 
 
 /* =========================================================
    BACK TO TOP
+   ---------------------------------------------------------
+   Uses IntersectionObserver when possible instead
+   of continuously calculating scroll position.
 ========================================================= */
 
-window.addEventListener(
-  "scroll",
-  () => {
+function setupBackTop() {
 
-    if (
-      window.scrollY > 600
-    ) {
-
-      backTop.classList.add(
-        "visible"
-      );
-
-    } else {
-
-      backTop.classList.remove(
-        "visible"
-      );
-
-    }
-
-  },
-  {
-    passive: true
+  if (!backTop) {
+    return;
   }
-);
+
+
+  /*
+    Use a small invisible trigger near the top.
+    This avoids a continuous scroll calculation.
+  */
+
+  if (
+    "IntersectionObserver" in window
+  ) {
+
+    const trigger =
+      document.createElement(
+        "div"
+      );
+
+
+    trigger.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    trigger.style.position =
+      "absolute";
+
+    trigger.style.top =
+      "500px";
+
+    trigger.style.width =
+      "1px";
+
+    trigger.style.height =
+      "1px";
+
+    trigger.style.pointerEvents =
+      "none";
+
+
+    document.body.appendChild(
+      trigger
+    );
+
+
+    const topObserver =
+      new IntersectionObserver(
+        entries => {
+
+          const entry =
+            entries[0];
+
+
+          backTop.classList.toggle(
+            "visible",
+            !entry.isIntersecting
+          );
+
+        }
+      );
+
+
+    topObserver.observe(
+      trigger
+    );
+
+  } else {
+
+    /*
+      Older-browser fallback.
+    */
+
+    let ticking = false;
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (ticking) {
+          return;
+        }
+
+
+        ticking = true;
+
+
+        requestAnimationFrame(
+          () => {
+
+            backTop.classList.toggle(
+              "visible",
+              window.scrollY > 600
+            );
+
+
+            ticking = false;
+
+          }
+        );
+
+      },
+      {
+        passive: true
+      }
+    );
+
+  }
+
+}
 
 
 if (backTop) {
@@ -844,8 +1185,14 @@ if (backTop) {
     () => {
 
       window.scrollTo({
+
         top: 0,
-        behavior: "smooth"
+
+        behavior:
+          reducedMotion
+            ? "auto"
+            : "smooth"
+
       });
 
     }
@@ -855,21 +1202,64 @@ if (backTop) {
 
 
 /* =========================================================
-   SMALL PARALLAX EFFECT
+   HERO PARALLAX
+   ---------------------------------------------------------
+   Desktop only.
+   Completely disabled for touch devices and
+   reduced-motion users.
 ========================================================= */
 
-const heroVisual =
-  document.querySelector(
-    ".hero-visual"
-  );
+function setupHeroParallax() {
+
+  if (
+    reducedMotion ||
+    !finePointer
+  ) {
+    return;
+  }
 
 
-if (
-  heroVisual &&
-  window.matchMedia(
-    "(pointer:fine)"
-  ).matches
-) {
+  const heroVisual =
+    $(".hero-visual");
+
+
+  if (!heroVisual) {
+    return;
+  }
+
+
+  const mainCard =
+    heroVisual.querySelector(
+      ".hero-card"
+    );
+
+
+  if (!mainCard) {
+    return;
+  }
+
+
+  let frame =
+    null;
+
+
+  let targetX = 0;
+  let targetY = 0;
+
+
+  function updateTransform() {
+
+    frame = null;
+
+
+    mainCard.style.transform =
+      `
+      rotate(${(-4 + targetX * 4).toFixed(2)}deg)
+      translate(${(targetX * 8).toFixed(2)}px, ${(targetY * 8).toFixed(2)}px)
+      `;
+
+  }
+
 
   heroVisual.addEventListener(
     "pointermove",
@@ -879,40 +1269,40 @@ if (
         heroVisual.getBoundingClientRect();
 
 
-      const x =
+      targetX =
         (
           event.clientX -
           rect.left
         ) /
         rect.width -
-        .5;
+        0.5;
 
 
-      const y =
+      targetY =
         (
           event.clientY -
           rect.top
         ) /
         rect.height -
-        .5;
+        0.5;
 
 
-      const mainCard =
-        heroVisual.querySelector(
-          ".hero-card"
-        );
+      /*
+        Only schedule one frame.
+      */
 
+      if (!frame) {
 
-      if (mainCard) {
-
-        mainCard.style.transform =
-          `
-          rotate(${-4 + x * 4}deg)
-          translate(${x * 8}px, ${y * 8}px)
-          `;
+        frame =
+          requestAnimationFrame(
+            updateTransform
+          );
 
       }
 
+    },
+    {
+      passive: true
     }
   );
 
@@ -921,18 +1311,23 @@ if (
     "pointerleave",
     () => {
 
-      const mainCard =
-        heroVisual.querySelector(
-          ".hero-card"
+      targetX = 0;
+      targetY = 0;
+
+
+      if (frame) {
+
+        cancelAnimationFrame(
+          frame
         );
 
-
-      if (mainCard) {
-
-        mainCard.style.transform =
-          "rotate(-4deg)";
+        frame = null;
 
       }
+
+
+      mainCard.style.transform =
+        "rotate(-4deg)";
 
     }
   );
@@ -941,21 +1336,81 @@ if (
 
 
 /* =========================================================
+   OPTIONAL NAVIGATION CLICK OPTIMIZATION
+========================================================= */
+
+navLinks.forEach(
+  link => {
+
+    link.addEventListener(
+      "click",
+      () => {
+
+        /*
+          Don't prevent default browser
+          anchor behaviour.
+        */
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
    INITIALISE
 ========================================================= */
 
 function init() {
 
+  /*
+    Prepare static elements first.
+  */
+
   prepareStaticReveal();
+
+
+  /*
+    Render projects once.
+  */
 
   renderProjects("all");
 
+
+  /*
+    Observe visible content.
+  */
+
   observeRevealElements();
+
+
+  /*
+    Navigation section tracking.
+  */
 
   setupSectionObserver();
 
+
+  /*
+    Back-to-top visibility.
+  */
+
+  setupBackTop();
+
+
+  /*
+    Desktop-only hero effect.
+  */
+
+  setupHeroParallax();
+
 }
 
+
+/* =========================================================
+   START
+========================================================= */
 
 if (
   document.readyState ===
@@ -964,7 +1419,10 @@ if (
 
   document.addEventListener(
     "DOMContentLoaded",
-    init
+    init,
+    {
+      once: true
+    }
   );
 
 } else {
@@ -983,14 +1441,34 @@ window.addEventListener(
   event => {
 
     /*
-      Do not allow a small runtime error
-      to leave the entire page visually
-      unusable.
+      Prevent an isolated JavaScript error
+      from being mistaken for a completely
+      broken website.
+
+      We deliberately don't display an
+      error message to visitors.
     */
 
     console.warn(
       "Portfolio runtime notice:",
       event.message
+    );
+
+  }
+);
+
+
+/* =========================================================
+   UNHANDLED PROMISE PROTECTION
+========================================================= */
+
+window.addEventListener(
+  "unhandledrejection",
+  event => {
+
+    console.warn(
+      "Portfolio promise notice:",
+      event.reason
     );
 
   }
