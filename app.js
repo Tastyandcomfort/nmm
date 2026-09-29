@@ -158,6 +158,27 @@ const projects = [
 
     url:
       "https://carehospitalsportal.github.io/Care-portal/"
+  },
+
+  {
+    id: "safe-route",
+    title: "Bank Of Internet",
+    category: "experiment",
+    categoryLabel: "Experiment",
+    icon: "△",
+
+    description:
+      "An experimental implementation for using the internet which you have paid will never be in leftover, I'm currently working on-it.",
+
+    tags: [
+      "Internet",
+      "Tracking",
+      "Sorting",
+      "Carry forward"
+    ],
+
+    url:
+      "https://carehospitalsportal.github.io/Care-portal/"
   }
 
 ];
