@@ -163,8 +163,8 @@ const projects = [
   {
     id: "safe-route",
     title: "Bank Of Internet",
-    category: "experiment",
-    categoryLabel: "Experiment",
+    category: "current project",
+    categoryLabel: "Current Project",
     icon: "📡",
 
     description:
