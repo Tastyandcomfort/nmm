@@ -162,7 +162,7 @@ const projects = [
 
   {
     id: "data-bank",
-    title: "Bank Of Internet",
+    title: "iNternet Bank",
     category: "current project",
     categoryLabel: "Current Project",
     icon: "📡",
@@ -178,7 +178,7 @@ const projects = [
     ],
 
     url:
-      "https://carehospitalsportal.github.io/Care-portal/"
+      "https://tastyandcomfort.github.io/databank/#connection"
   }
 
 ];
