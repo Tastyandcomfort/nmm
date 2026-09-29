@@ -161,7 +161,7 @@ const projects = [
   },
 
   {
-    id: "safe-route",
+    id: "data-bank",
     title: "Bank Of Internet",
     category: "current project",
     categoryLabel: "Current Project",
