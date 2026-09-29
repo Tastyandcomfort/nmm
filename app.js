@@ -37,7 +37,7 @@ const projects = [
 
   {
     id: "former",
-    title: "Former",
+    title: "Jai Kisan",
     category: "business",
     categoryLabel: "Business",
     icon: "◌",
@@ -57,7 +57,7 @@ const projects = [
 
   {
     id: "find-near-care",
-    title: "Find Near CARE",
+    title: "Find Near-CARE",
     category: "healthcare",
     categoryLabel: "Healthcare",
     icon: "⌖",
@@ -78,7 +78,7 @@ const projects = [
 
   {
     id: "find-doctor-care",
-    title: "Find Doctor CARE",
+    title: "CARE-Find Doctor",
     category: "healthcare",
     categoryLabel: "Healthcare",
     icon: "✚",
@@ -99,7 +99,7 @@ const projects = [
 
   {
     id: "care-portal",
-    title: "CARE Portal",
+    title: "CARE-Portal",
     category: "tools",
     categoryLabel: "Tools",
     icon: "▦",
@@ -120,7 +120,7 @@ const projects = [
 
   {
     id: "portal",
-    title: "Personal Web Portal",
+    title: "My Portfolio",
     category: "experiments",
     categoryLabel: "Experiment",
     icon: "⌘",
@@ -140,7 +140,7 @@ const projects = [
 
   {
     id: "safe-route",
-    title: "Safe Route",
+    title: "Safe Route-No Sim",
     category: "tools",
     categoryLabel: "Tools",
     icon: "△",
@@ -149,10 +149,10 @@ const projects = [
       "An experimental safety and communication platform concept combining Safe Route IDs, messaging, voice communication, maps, GPS and route-related utilities.",
 
     tags: [
-      "Safety",
-      "Communication",
+      "No-Sim required",
+      "Chat",
+      "Call",
       "Maps",
-      "GPS",
       "Supabase"
     ],
 
