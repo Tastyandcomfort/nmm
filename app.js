@@ -168,7 +168,7 @@ const projects = [
     icon: "📡",
 
     description:
-      "An experimental implementation for using the internet which you have paid will never be in leftover <span class="gradient-text">Currently working on it</span>",
+      "An experimental implementation for using the internet which you have paid will never be in leftover, <span Currently working on-it</span>",
 
     tags: [
       "Internet",
