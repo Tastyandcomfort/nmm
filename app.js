@@ -164,11 +164,11 @@ const projects = [
     id: "safe-route",
     title: "Bank Of Internet",
     category: "experiment",
-    categoryLabel: "Under process",
+    categoryLabel: "Experiment",
     icon: "📡",
 
     description:
-      "An experimental implementation for using the internet which you have paid will never be in leftover, <span Currently working on-it</span>",
+      "An experimental implementation for using the internet which you have paid will never be in leftover, Currently working on-it",
 
     tags: [
       "Internet",
