@@ -164,7 +164,7 @@ const projects = [
     id: "data-bank",
     title: "Bank Of Internet",
     category: "experiment",
-    categoryLabel: "<span class="gradient-text">Under process</span>",
+    categoryLabel: "Under process",
     icon: "📡",
 
     description:
