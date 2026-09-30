@@ -209,7 +209,7 @@ const experience = {
     "Currently Working",
 
   summary:
-    "Currently working with Tech Mahindra BPS on the CARE Hospitals project in the healthcare service environment.",
+    "Currently working with Tech Mahindra in BPS division on the CARE Hospitals project in the healthcare service environment.",
 
   employment:
     "Current Employment"
