@@ -1,7 +1,9 @@
 /* =========================================================
    MURALI MANOHAR — V3
-   FULL APPLICATION
-   CV + PROJECTS + THEME + REVEAL + NAVIGATION
+   UPDATED PORTFOLIO APPLICATION
+   ---------------------------------------------------------
+   Visual design: UNCHANGED
+   Current experience: Tech Mahindra BPS — CARE Hospitals
 ========================================================= */
 
 
@@ -33,7 +35,6 @@ const projects = [
       "https://tastyandcomfort.github.io/T-C/"
   },
 
-
   {
     id: "former",
     title: "Jai Kisan",
@@ -53,7 +54,6 @@ const projects = [
     url:
       "https://tastyandcomfort.github.io/Former/"
   },
-
 
   {
     id: "find-near-care",
@@ -76,7 +76,6 @@ const projects = [
       "https://muralimanoharcoin-max.github.io/Find-near-care/"
   },
 
-
   {
     id: "find-doctor-care",
     title: "CARE-Find Doctor",
@@ -97,7 +96,6 @@ const projects = [
     url:
       "https://tandcfromnmm.github.io/Find-doctor-care.com/"
   },
-
 
   {
     id: "care-portal",
@@ -120,7 +118,6 @@ const projects = [
       "https://sites.google.com/view/imheretohelpyou/portal-test?authuser=0"
   },
 
-
   {
     id: "portal",
     title: "My Portfolio",
@@ -140,7 +137,6 @@ const projects = [
     url:
       "https://tastyandcomfort.github.io/nmm/#home"
   },
-
 
   {
     id: "safe-route",
@@ -164,7 +160,6 @@ const projects = [
       "https://carehospitalsportal.github.io/Care-portal/"
   },
 
-
   {
     id: "data-bank",
     title: "iNternet Bank",
@@ -173,7 +168,7 @@ const projects = [
     icon: "📡",
 
     description:
-      "An experimental implementation for using the internet which you have paid will never be in leftover. Currently working on it.",
+      "An experimental implementation focused on making better use of internet connectivity, including connection tracking, sorting and carry-forward concepts. Currently under development.",
 
     tags: [
       "Internet",
@@ -190,7 +185,40 @@ const projects = [
 
 
 /* =========================================================
-   DOM HELPERS
+   CURRENT PROFESSIONAL EXPERIENCE
+========================================================= */
+
+const experience = {
+
+  company:
+    "Tech Mahindra",
+
+  division:
+    "Tech Mahindra BPS",
+
+  project:
+    "CARE Hospitals Project",
+
+  sector:
+    "Healthcare",
+
+  role:
+    "BPS Professional — CARE Hospitals Project",
+
+  status:
+    "Currently Working",
+
+  summary:
+    "Currently working with Tech Mahindra BPS on the CARE Hospitals project in the healthcare service environment.",
+
+  employment:
+    "Current Employment"
+
+};
+
+
+/* =========================================================
+   CACHE DOM ELEMENTS
 ========================================================= */
 
 const $ = selector =>
@@ -202,10 +230,6 @@ const $$ = selector =>
     document.querySelectorAll(selector)
   );
 
-
-/* =========================================================
-   DOM CACHE
-========================================================= */
 
 const projectsGrid =
   $("#projectsGrid");
@@ -254,7 +278,7 @@ const navLinks =
 
 
 /* =========================================================
-   DEVICE / MOTION
+   DEVICE / MOTION SETTINGS
 ========================================================= */
 
 const reducedMotion =
@@ -286,19 +310,6 @@ if (currentYear) {
 
 
 /* =========================================================
-   PROJECT MAP
-========================================================= */
-
-const projectMap =
-  new Map(
-    projects.map(project => [
-      project.id,
-      project
-    ])
-  );
-
-
-/* =========================================================
    PROJECT CARD
 ========================================================= */
 
@@ -307,14 +318,13 @@ function createProjectCard(project) {
   const article =
     document.createElement("article");
 
+
   article.className =
     "project-card reveal";
 
+
   article.dataset.category =
     project.category;
-
-  article.dataset.projectId =
-    project.id;
 
 
   const tagsHTML =
@@ -367,9 +377,28 @@ function createProjectCard(project) {
   `;
 
 
+  article.dataset.projectId =
+    project.id;
+
+
   return article;
 
 }
+
+
+/* =========================================================
+   PROJECT LOOKUP
+========================================================= */
+
+const projectMap =
+  new Map(
+    projects.map(
+      project => [
+        project.id,
+        project
+      ]
+    )
+  );
 
 
 /* =========================================================
@@ -429,7 +458,7 @@ function renderProjects(
 
 
 /* =========================================================
-   PROJECT CLICK
+   PROJECT CARD CLICK HANDLER
 ========================================================= */
 
 if (projectsGrid) {
@@ -449,14 +478,22 @@ if (projectsGrid) {
       }
 
 
+      const projectId =
+        card.dataset.projectId;
+
+
       const project =
         projectMap.get(
-          card.dataset.projectId
+          projectId
         );
 
 
       if (project) {
-        openProject(project);
+
+        openProject(
+          project
+        );
+
       }
 
     }
@@ -466,7 +503,7 @@ if (projectsGrid) {
 
 
 /* =========================================================
-   PROJECT FILTER
+   FILTERS
 ========================================================= */
 
 if (projectFilter) {
@@ -494,7 +531,9 @@ if (projectFilter) {
       if (
         filter === currentFilter
       ) {
+
         return;
+
       }
 
 
@@ -516,7 +555,9 @@ if (projectFilter) {
       );
 
 
-      renderProjects(filter);
+      renderProjects(
+        filter
+      );
 
     }
   );
@@ -525,10 +566,12 @@ if (projectFilter) {
 
 
 /* =========================================================
-   OPEN PROJECT
+   OPEN PROJECT MODAL
 ========================================================= */
 
-function openProject(project) {
+function openProject(
+  project
+) {
 
   if (!projectModal) {
     return;
@@ -607,7 +650,7 @@ function openProject(project) {
 
 
 /* =========================================================
-   CLOSE PROJECT
+   CLOSE PROJECT MODAL
 ========================================================= */
 
 function closeProject() {
@@ -689,7 +732,9 @@ document.addEventListener(
    THEME
 ========================================================= */
 
-function applyTheme(theme) {
+function applyTheme(
+  theme
+) {
 
   const dark =
     theme === "dark";
@@ -730,7 +775,9 @@ function getSavedTheme() {
 }
 
 
-function saveTheme(theme) {
+function saveTheme(
+  theme
+) {
 
   try {
 
@@ -752,13 +799,17 @@ if (
   savedTheme === "dark"
 ) {
 
-  applyTheme("dark");
+  applyTheme(
+    "dark"
+  );
 
 } else if (
   savedTheme === "light"
 ) {
 
-  applyTheme("light");
+  applyTheme(
+    "light"
+  );
 
 } else if (
   window.matchMedia &&
@@ -767,11 +818,15 @@ if (
   ).matches
 ) {
 
-  applyTheme("dark");
+  applyTheme(
+    "dark"
+  );
 
 } else {
 
-  applyTheme("light");
+  applyTheme(
+    "light"
+  );
 
 }
 
@@ -798,9 +853,14 @@ if (themeButton) {
           : "dark";
 
 
-      applyTheme(nextTheme);
+      applyTheme(
+        nextTheme
+      );
 
-      saveTheme(nextTheme);
+
+      saveTheme(
+        nextTheme
+      );
 
     }
   );
@@ -892,7 +952,7 @@ function observeRevealElements() {
 
         },
         {
-          threshold: 0.05,
+          threshold:0.05,
           rootMargin:
             "0px 0px 80px 0px"
         }
@@ -915,7 +975,7 @@ function observeRevealElements() {
 
 
 /* =========================================================
-   STATIC REVEAL
+   STATIC REVEAL ELEMENTS
 ========================================================= */
 
 function prepareStaticReveal() {
@@ -926,35 +986,113 @@ function prepareStaticReveal() {
     ".about-card",
     ".ability-card",
     ".process-step",
-    ".cv-card",
     ".lab-card",
     ".closing-inner",
-    ".contact-card"
+    ".contact-card",
+    ".experience-card"
 
   ];
 
 
-  selectors.forEach(
-    selector => {
+  for (
+    const selector of selectors
+  ) {
 
-      const elements =
-        document.querySelectorAll(
-          selector
-        );
-
-
-      elements.forEach(
-        element => {
-
-          element.classList.add(
-            "reveal"
-          );
-
-        }
+    const elements =
+      document.querySelectorAll(
+        selector
       );
 
-    }
-  );
+
+    elements.forEach(
+      element => {
+
+        element.classList.add(
+          "reveal"
+        );
+
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   CURRENT EXPERIENCE AUTO-UPDATE
+   ---------------------------------------------------------
+   If an experience section exists in HTML,
+   populate it without requiring extra JS.
+========================================================= */
+
+function populateExperience() {
+
+  const company =
+    $("#experienceCompany");
+
+  const division =
+    $("#experienceDivision");
+
+  const project =
+    $("#experienceProject");
+
+  const role =
+    $("#experienceRole");
+
+  const status =
+    $("#experienceStatus");
+
+  const summary =
+    $("#experienceSummary");
+
+
+  if (company) {
+
+    company.textContent =
+      experience.company;
+
+  }
+
+
+  if (division) {
+
+    division.textContent =
+      experience.division;
+
+  }
+
+
+  if (project) {
+
+    project.textContent =
+      experience.project;
+
+  }
+
+
+  if (role) {
+
+    role.textContent =
+      experience.role;
+
+  }
+
+
+  if (status) {
+
+    status.textContent =
+      experience.status;
+
+  }
+
+
+  if (summary) {
+
+    summary.textContent =
+      experience.summary;
+
+  }
 
 }
 
@@ -1030,7 +1168,7 @@ function setupSectionObserver() {
       {
         rootMargin:
           "-35% 0px -55% 0px",
-        threshold: 0
+        threshold:0
       }
     );
 
@@ -1078,14 +1216,18 @@ function setupBackTop() {
     trigger.style.position =
       "absolute";
 
+
     trigger.style.top =
       "500px";
+
 
     trigger.style.width =
       "1px";
 
+
     trigger.style.height =
       "1px";
+
 
     trigger.style.pointerEvents =
       "none";
@@ -1144,14 +1286,15 @@ function setupBackTop() {
             );
 
 
-            ticking = false;
+            ticking =
+              false;
 
           }
         );
 
       },
       {
-        passive: true
+        passive:true
       }
     );
 
@@ -1168,7 +1311,7 @@ if (backTop) {
 
       window.scrollTo({
 
-        top: 0,
+        top:0,
 
         behavior:
           reducedMotion
@@ -1224,19 +1367,27 @@ function setupHeroParallax() {
   let targetX =
     0;
 
+
   let targetY =
     0;
 
 
   function updateTransform() {
 
-    frame = null;
+    frame =
+      null;
 
 
     mainCard.style.transform =
       `
-      rotate(${(-4 + targetX * 4).toFixed(2)}deg)
-      translate(${(targetX * 8).toFixed(2)}px, ${(targetY * 8).toFixed(2)}px)
+      rotate(${(
+        -4 +
+        targetX * 4
+      ).toFixed(2)}deg)
+      translate(${(
+        targetX * 8
+      ).toFixed(2)}px,
+      ${(targetY * 8).toFixed(2)}px)
       `;
 
   }
@@ -1279,7 +1430,7 @@ function setupHeroParallax() {
 
     },
     {
-      passive: true
+      passive:true
     }
   );
 
@@ -1288,8 +1439,12 @@ function setupHeroParallax() {
     "pointerleave",
     () => {
 
-      targetX = 0;
-      targetY = 0;
+      targetX =
+        0;
+
+
+      targetY =
+        0;
 
 
       if (frame) {
@@ -1298,7 +1453,9 @@ function setupHeroParallax() {
           frame
         );
 
-        frame = null;
+
+        frame =
+          null;
 
       }
 
@@ -1320,7 +1477,11 @@ function init() {
 
   prepareStaticReveal();
 
-  renderProjects("all");
+  populateExperience();
+
+  renderProjects(
+    "all"
+  );
 
   observeRevealElements();
 
@@ -1346,7 +1507,7 @@ if (
     "DOMContentLoaded",
     init,
     {
-      once: true
+      once:true
     }
   );
 
