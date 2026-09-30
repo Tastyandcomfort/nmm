@@ -1,9 +1,7 @@
 /* =========================================================
    MURALI MANOHAR — V3
-   OPTIMIZED MAIN APPLICATION
-   ---------------------------------------------------------
-   Drop-in replacement for the existing app.js
-   Visual design: UNCHANGED
+   FULL APPLICATION
+   CV + PROJECTS + THEME + REVEAL + NAVIGATION
 ========================================================= */
 
 
@@ -35,6 +33,7 @@ const projects = [
       "https://tastyandcomfort.github.io/T-C/"
   },
 
+
   {
     id: "former",
     title: "Jai Kisan",
@@ -54,6 +53,7 @@ const projects = [
     url:
       "https://tastyandcomfort.github.io/Former/"
   },
+
 
   {
     id: "find-near-care",
@@ -76,6 +76,7 @@ const projects = [
       "https://muralimanoharcoin-max.github.io/Find-near-care/"
   },
 
+
   {
     id: "find-doctor-care",
     title: "CARE-Find Doctor",
@@ -96,6 +97,7 @@ const projects = [
     url:
       "https://tandcfromnmm.github.io/Find-doctor-care.com/"
   },
+
 
   {
     id: "care-portal",
@@ -118,6 +120,7 @@ const projects = [
       "https://sites.google.com/view/imheretohelpyou/portal-test?authuser=0"
   },
 
+
   {
     id: "portal",
     title: "My Portfolio",
@@ -137,6 +140,7 @@ const projects = [
     url:
       "https://tastyandcomfort.github.io/nmm/#home"
   },
+
 
   {
     id: "safe-route",
@@ -160,15 +164,16 @@ const projects = [
       "https://carehospitalsportal.github.io/Care-portal/"
   },
 
+
   {
     id: "data-bank",
     title: "iNternet Bank",
-    category: "current project",
+    category: "current-project",
     categoryLabel: "Current Project",
     icon: "📡",
 
     description:
-      "An experimental implementation for using the internet which you have paid will never be in leftover, Currently working on-it",
+      "An experimental implementation for using the internet which you have paid will never be in leftover. Currently working on it.",
 
     tags: [
       "Internet",
@@ -185,17 +190,22 @@ const projects = [
 
 
 /* =========================================================
-   CACHE DOM ELEMENTS
-   ---------------------------------------------------------
-   Query DOM once instead of repeatedly searching the page.
+   DOM HELPERS
 ========================================================= */
 
 const $ = selector =>
   document.querySelector(selector);
 
-const $$ = selector =>
-  Array.from(document.querySelectorAll(selector));
 
+const $$ = selector =>
+  Array.from(
+    document.querySelectorAll(selector)
+  );
+
+
+/* =========================================================
+   DOM CACHE
+========================================================= */
 
 const projectsGrid =
   $("#projectsGrid");
@@ -244,7 +254,7 @@ const navLinks =
 
 
 /* =========================================================
-   DEVICE / MOTION SETTINGS
+   DEVICE / MOTION
 ========================================================= */
 
 const reducedMotion =
@@ -268,9 +278,24 @@ const finePointer =
 if (currentYear) {
 
   currentYear.textContent =
-    String(new Date().getFullYear());
+    String(
+      new Date().getFullYear()
+    );
 
 }
+
+
+/* =========================================================
+   PROJECT MAP
+========================================================= */
+
+const projectMap =
+  new Map(
+    projects.map(project => [
+      project.id,
+      project
+    ])
+  );
 
 
 /* =========================================================
@@ -288,13 +313,16 @@ function createProjectCard(project) {
   article.dataset.category =
     project.category;
 
-  /*
-    Build the tags only once.
-  */
+  article.dataset.projectId =
+    project.id;
+
 
   const tagsHTML =
     project.tags
-      .map(tag => `<span>${tag}</span>`)
+      .map(
+        tag =>
+          `<span>${tag}</span>`
+      )
       .join("");
 
 
@@ -339,41 +367,22 @@ function createProjectCard(project) {
   `;
 
 
-  /*
-    Store the project ID instead of creating
-    a separate listener for every card.
-  */
-
-  article.dataset.projectId =
-    project.id;
-
-
   return article;
 
 }
 
 
 /* =========================================================
-   PROJECT LOOKUP
-========================================================= */
-
-const projectMap =
-  new Map(
-    projects.map(project => [
-      project.id,
-      project
-    ])
-  );
-
-
-/* =========================================================
    RENDER PROJECTS
 ========================================================= */
 
-let currentFilter = "all";
+let currentFilter =
+  "all";
 
 
-function renderProjects(filter = "all") {
+function renderProjects(
+  filter = "all"
+) {
 
   if (!projectsGrid) {
     return;
@@ -383,11 +392,6 @@ function renderProjects(filter = "all") {
   currentFilter =
     filter;
 
-
-  /*
-    Build everything in a DocumentFragment.
-    This minimizes browser re-layout work.
-  */
 
   const fragment =
     document.createDocumentFragment();
@@ -412,19 +416,10 @@ function renderProjects(filter = "all") {
   }
 
 
-  /*
-    One DOM replacement instead of repeatedly
-    adding and repainting individual cards.
-  */
-
   projectsGrid.replaceChildren(
     fragment
   );
 
-
-  /*
-    Reveal only after the cards are inserted.
-  */
 
   requestAnimationFrame(
     observeRevealElements
@@ -434,10 +429,7 @@ function renderProjects(filter = "all") {
 
 
 /* =========================================================
-   PROJECT CARD CLICK HANDLER
-   ---------------------------------------------------------
-   Event delegation = one listener instead
-   of one listener per project card.
+   PROJECT CLICK
 ========================================================= */
 
 if (projectsGrid) {
@@ -457,12 +449,10 @@ if (projectsGrid) {
       }
 
 
-      const projectId =
-        card.dataset.projectId;
-
-
       const project =
-        projectMap.get(projectId);
+        projectMap.get(
+          card.dataset.projectId
+        );
 
 
       if (project) {
@@ -476,7 +466,7 @@ if (projectsGrid) {
 
 
 /* =========================================================
-   FILTERS
+   PROJECT FILTER
 ========================================================= */
 
 if (projectFilter) {
@@ -501,23 +491,12 @@ if (projectFilter) {
         "all";
 
 
-      /*
-        Avoid rendering again if the user
-        clicks the already active filter.
-      */
-
       if (
         filter === currentFilter
       ) {
-
         return;
-
       }
 
-
-      /*
-        Update button states efficiently.
-      */
 
       const buttons =
         projectFilter.querySelectorAll(
@@ -525,14 +504,16 @@ if (projectFilter) {
         );
 
 
-      buttons.forEach(item => {
+      buttons.forEach(
+        item => {
 
-        item.classList.toggle(
-          "active",
-          item === button
-        );
+          item.classList.toggle(
+            "active",
+            item === button
+          );
 
-      });
+        }
+      );
 
 
       renderProjects(filter);
@@ -544,7 +525,7 @@ if (projectFilter) {
 
 
 /* =========================================================
-   OPEN PROJECT MODAL
+   OPEN PROJECT
 ========================================================= */
 
 function openProject(project) {
@@ -590,7 +571,10 @@ function openProject(project) {
 
     modalTags.innerHTML =
       project.tags
-        .map(tag => `<span>${tag}</span>`)
+        .map(
+          tag =>
+            `<span>${tag}</span>`
+        )
         .join("");
 
   }
@@ -608,10 +592,12 @@ function openProject(project) {
     "open"
   );
 
+
   projectModal.setAttribute(
     "aria-hidden",
     "false"
   );
+
 
   document.body.classList.add(
     "modal-open"
@@ -621,7 +607,7 @@ function openProject(project) {
 
 
 /* =========================================================
-   CLOSE PROJECT MODAL
+   CLOSE PROJECT
 ========================================================= */
 
 function closeProject() {
@@ -635,10 +621,12 @@ function closeProject() {
     "open"
   );
 
+
   projectModal.setAttribute(
     "aria-hidden",
     "true"
   );
+
 
   document.body.classList.remove(
     "modal-open"
@@ -751,31 +739,24 @@ function saveTheme(theme) {
       theme
     );
 
-  } catch {
-
-    /*
-      Storage can be unavailable in
-      private/restricted browser modes.
-    */
-
-  }
+  } catch {}
 
 }
 
-
-/*
-  Detect theme once during startup.
-*/
 
 const savedTheme =
   getSavedTheme();
 
 
-if (savedTheme === "dark") {
+if (
+  savedTheme === "dark"
+) {
 
   applyTheme("dark");
 
-} else if (savedTheme === "light") {
+} else if (
+  savedTheme === "light"
+) {
 
   applyTheme("light");
 
@@ -856,11 +837,6 @@ function revealImmediately() {
 }
 
 
-/*
-  If the user prefers reduced motion,
-  don't create an IntersectionObserver.
-*/
-
 function observeRevealElements() {
 
   const elements =
@@ -939,7 +915,7 @@ function observeRevealElements() {
 
 
 /* =========================================================
-   STATIC REVEAL ELEMENTS
+   STATIC REVEAL
 ========================================================= */
 
 function prepareStaticReveal() {
@@ -950,6 +926,7 @@ function prepareStaticReveal() {
     ".about-card",
     ".ability-card",
     ".process-step",
+    ".cv-card",
     ".lab-card",
     ".closing-inner",
     ".contact-card"
@@ -957,27 +934,27 @@ function prepareStaticReveal() {
   ];
 
 
-  for (
-    const selector of selectors
-  ) {
+  selectors.forEach(
+    selector => {
 
-    const elements =
-      document.querySelectorAll(
-        selector
-      );
-
-
-    elements.forEach(
-      element => {
-
-        element.classList.add(
-          "reveal"
+      const elements =
+        document.querySelectorAll(
+          selector
         );
 
-      }
-    );
 
-  }
+      elements.forEach(
+        element => {
+
+          element.classList.add(
+            "reveal"
+          );
+
+        }
+      );
+
+    }
+  );
 
 }
 
@@ -1014,11 +991,6 @@ function setupSectionObserver() {
   sectionObserver =
     new IntersectionObserver(
       entries => {
-
-        /*
-          Only update navigation when
-          an actually visible section changes.
-        */
 
         for (
           const entry of entries
@@ -1078,9 +1050,6 @@ function setupSectionObserver() {
 
 /* =========================================================
    BACK TO TOP
-   ---------------------------------------------------------
-   Uses IntersectionObserver when possible instead
-   of continuously calculating scroll position.
 ========================================================= */
 
 function setupBackTop() {
@@ -1089,11 +1058,6 @@ function setupBackTop() {
     return;
   }
 
-
-  /*
-    Use a small invisible trigger near the top.
-    This avoids a continuous scroll calculation.
-  */
 
   if (
     "IntersectionObserver" in window
@@ -1155,11 +1119,8 @@ function setupBackTop() {
 
   } else {
 
-    /*
-      Older-browser fallback.
-    */
-
-    let ticking = false;
+    let ticking =
+      false;
 
 
     window.addEventListener(
@@ -1224,10 +1185,6 @@ if (backTop) {
 
 /* =========================================================
    HERO PARALLAX
-   ---------------------------------------------------------
-   Desktop only.
-   Completely disabled for touch devices and
-   reduced-motion users.
 ========================================================= */
 
 function setupHeroParallax() {
@@ -1264,8 +1221,11 @@ function setupHeroParallax() {
     null;
 
 
-  let targetX = 0;
-  let targetY = 0;
+  let targetX =
+    0;
+
+  let targetY =
+    0;
 
 
   function updateTransform() {
@@ -1307,10 +1267,6 @@ function setupHeroParallax() {
         rect.height -
         0.5;
 
-
-      /*
-        Only schedule one frame.
-      */
 
       if (!frame) {
 
@@ -1357,72 +1313,20 @@ function setupHeroParallax() {
 
 
 /* =========================================================
-   OPTIONAL NAVIGATION CLICK OPTIMIZATION
-========================================================= */
-
-navLinks.forEach(
-  link => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        /*
-          Don't prevent default browser
-          anchor behaviour.
-        */
-
-      }
-    );
-
-  }
-);
-
-
-/* =========================================================
    INITIALISE
 ========================================================= */
 
 function init() {
 
-  /*
-    Prepare static elements first.
-  */
-
   prepareStaticReveal();
-
-
-  /*
-    Render projects once.
-  */
 
   renderProjects("all");
 
-
-  /*
-    Observe visible content.
-  */
-
   observeRevealElements();
-
-
-  /*
-    Navigation section tracking.
-  */
 
   setupSectionObserver();
 
-
-  /*
-    Back-to-top visibility.
-  */
-
   setupBackTop();
-
-
-  /*
-    Desktop-only hero effect.
-  */
 
   setupHeroParallax();
 
@@ -1461,15 +1365,6 @@ window.addEventListener(
   "error",
   event => {
 
-    /*
-      Prevent an isolated JavaScript error
-      from being mistaken for a completely
-      broken website.
-
-      We deliberately don't display an
-      error message to visitors.
-    */
-
     console.warn(
       "Portfolio runtime notice:",
       event.message
@@ -1494,3 +1389,4 @@ window.addEventListener(
 
   }
 );
+
