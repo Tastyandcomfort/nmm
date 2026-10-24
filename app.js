@@ -163,12 +163,12 @@ const projects = [
   {
     id: "t&c news hub",
     title: "T&C NEWS HUB",
-    category: "tools",
-    categoryLabel: "Tools",
+    category: "articles",
+    categoryLabel: "NEWS",
     icon: "△",
 
     description:
-      "An experimental safety and communication platform concept combining Safe Route IDs, messaging, voice communication, maps, GPS and route-related utilities.",
+      "This platform concept is to provide live news, filtered and listed.",
 
     tags: [
       "Live News",
