@@ -161,6 +161,30 @@ const projects = [
   },
 
   {
+    id: "t&c news hub",
+    title: "T&C NEWS HUB",
+    category: "tools",
+    categoryLabel: "Tools",
+    icon: "△",
+
+    description:
+      "An experimental safety and communication platform concept combining Safe Route IDs, messaging, voice communication, maps, GPS and route-related utilities.",
+
+    tags: [
+      "Live News",
+      "Listed Only",
+      "Categorised",
+      "Trusted Source",
+      "Lit-News"
+    ],
+
+    url:
+      "https://tastyandcomfort.github.io/news/"
+  },
+   
+   
+   
+  {
     id: "data-bank",
     title: "iNternet Bank",
     category: "current-project",
