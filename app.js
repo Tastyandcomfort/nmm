@@ -213,13 +213,20 @@ const projects = [
     icon: "📡",
 
     description:
-      "An experimental implementation focused on making better use of internet connectivity, including connection tracking, sorting and carry-forward concepts. Currently under development.",
+      "Designed with a focus on clarity, speed, and zero-clutter telemetry, it brings together live orbital mechanics, planetary earth observation, and space weather intelligence for students, researchers, and space enthusiasts worldwide.",
 
     tags: [
-      "Real-time tracking",
-      "Satilits, Earthqucks, near earth objects, etc.",
-      "NASA-Source contrubutes",
-      "Civilen aircrafts tracking for selected region"
+      "Real-time trajectory calculation",
+      "14,000+ Satilits", 
+      "PLANETARY HAZARDS", 
+      "REGIONAL ENVIRONMENTAL & RESOURCE INTELL Brief", 
+      "INTERSTELLAR EXPLORATION",
+      "Wikipedia's ASTRONOMICAL KNOWLEDGE",
+      "Near Earth Objects", 
+      "Rocket Launche info",
+      "Solar & Geomagnetic Events",
+      "Sources-Global space agencies(NASA) & open-science",
+      "Civilen aircrafts tracking"
     ],
 
     url:
