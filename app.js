@@ -203,7 +203,29 @@ const projects = [
 
     url:
       "https://tastyandcomfort.github.io/databank/#connection"
+  },
+
+     {
+    id: "space",
+    title: "T-C-Space",
+    category: "experimental",
+    categoryLabel: "Current Project",
+    icon: "📡",
+
+    description:
+      "An experimental implementation focused on making better use of internet connectivity, including connection tracking, sorting and carry-forward concepts. Currently under development.",
+
+    tags: [
+      "Real-time tracking",
+      "Satilits, Earthqucks, near earth objects, etc.",
+      "NASA-Source contrubutes",
+      "Civilen aircrafts tracking for selected region"
+    ],
+
+    url:
+      "https://tastyandcomfort.github.io/T-C-Space/"
   }
+
 
 ];
 
