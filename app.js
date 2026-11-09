@@ -122,7 +122,7 @@ const projects = [
     id: "portal",
     title: "My Portfolio",
     category: "articles",
-    categoryLabel: "Experiment",
+    categoryLabel: "About",
     icon: "⌘",
 
     description:
@@ -209,7 +209,7 @@ const projects = [
     id: "space",
     title: "T-C-Space",
     category: "experimental",
-    categoryLabel: "Current Project",
+    categoryLabel: "Space",
     icon: "📡",
 
     description:
