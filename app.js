@@ -121,7 +121,7 @@ const projects = [
   {
     id: "portal",
     title: "My Portfolio",
-    category: "experiments",
+    category: "articles",
     categoryLabel: "Experiment",
     icon: "⌘",
 
@@ -225,7 +225,7 @@ const projects = [
       "Near Earth Objects", 
       "Rocket Launche info",
       "Solar & Geomagnetic Events",
-      "Sources-Global space agencies(NASA) & open-science",
+      "Sources: Global space agencies(NASA) & open-science",
       "Civilen aircrafts tracking"
     ],
 
